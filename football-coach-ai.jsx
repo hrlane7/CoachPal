@@ -139,6 +139,18 @@ if (typeof document !== "undefined" && !document.getElementById("cp-oswald")) {
   document.head.appendChild(s);
 }
 
+
+// ─────────────────────────────────────────────────────────────
+// LOGO — embedded as data URIs (no external file needed)
+// ─────────────────────────────────────────────────────────────
+const LOGO_ICON = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAABACAYAAAB7jnWuAAAFgElEQVR42u2ZW2xURRiAv5lzzq64lFIRWqTctJSACMJDrYCaNoh4i1UMRlQ0Gi8RfVBjIBIkMUZRxHhBSQwWjNFYSCx4AyFqCRExFCsYLUpLS6m0hboFBLvdPTO/D7vUlijshmoN2T+Zl3Mmc75//uvMUdZaoRdF08vy/wVQvQ0gaR9IA/wHonobQNI+kAZIA6QBzioAEcH3Dal2eG5PfVxrjdZxfay1KFRSXY1OtfsREawVROKaKqXQWnP46DFeev19Knf9gtYapRVKKUSkc/xtQUqlKzbW4jpOt2ftkQ4A7nl8CdkZIXbs2cfKJU8wLDebgOugu8w3xnTuUsoAJ7b5+B8R9jW20KdPgNp9Tdz32EtI0OPQb0dYv+oZ5i0upaa2kZCjmXlLMU/NvZ2DB8MMzjmf8/pnxM2jVGo+YK3gOJqVqzew5M3VZGSEODcU5P7bZtBwsA0iHRDwKLr2YQiFQDuEW8N4nsfLK8rZtGkrHdYyq6SYhY/OxhiL1urE4lZONXzfiIjI9z/WyNDL75Qdu34R3xgxJv483HZU9v/aIo3NrVJTf0B+qK6Vurp62VtbJ2I7RMSKiJX6/c2SX3SflG/YIiIiMd8Xa62cdgesWBw0GzZvp2RaAZMuGQVAJBrjg/JN7DvQihdwiB2LMK1oElMKxrP6uwieq9i6vYNzvShX5AUZnpvNA7fPYH1FJSXXTI07pSRhAtUlRjzXxVqhNXyY6+5awI6K7ZCVCUpB+Aj5o57BDBjLso1N9A+5KKU5HrVU1gd4tmQQJCLmRDuktDo9gCROCAqFn7DdolfeY8fXVZSve5WCCaMxxuI4mguyB2CtsPGJ4QA4WrF882Eqdh9DKYWrVOd5Q2tNJBJNPhEJ4Hnx6WWfVHDDrGmUTJ/cbU7MCFv2/IFvQGvwDVTWR8jPDgDgW+ncT8fRvF32RQoAIgQ8F7GWtpYwWZn9iCRygKBwHc2eQ4bF68M4WuFqhbHCqJwgjxRnds6jSwhWbNuZPIBSio5oDKU14y8dzbtvlrF207c4jib2eztfrX6OluAY+gYVL946iFBAYa0wMEPjqPjG65NSbntHCiZQiXwAsPatp1lWuo7mtiNYgaDnMPqiYXz41VHycoLkDfIA2F71E5fPWcS8J+9m7pwb8X3Tbc0BWf1S8wEnocKI3ByWLnqo2/u244bqxgPMLuzXWV22VFYzeGQO52f1+0uLLnn35umTUzEB+MYCsK1qN6+VlrPg0dmMGz0CgKyQw6oHh9LfgwPNrSxd8SG+77Nm+dPkDMxKmEB1uoDvG64vLkgewPctwYCLtZZoNIa1hmDAY2vlj4TbjhAMeLS3t1Nd8yu1+5spnjKBSePyWby8jIlj87j3tul4nodJmFGIV8ikE9Hw3GxK1+xEa81VheO5qnA8AKNGDqG+oYmGpkN4gQB3zBxD7uCBABz9/Thj84Zxcf5QHMfh26qfGJM3NMVqKHHamG+4ds5TZJwT5MopE4nFYriuiytCYcE4CieOAeDnvY2s/XQLuJpAIEB7R5S+fYJUVlWzc08DX77/AlmZGfGgVCq5ciwCWiui0RhvvPMRNXWNKMfB0Zr9DU00tIap/PgNSss+Z+HSVdxYdBle0MNaQWuF8X2GZA9g7j030T/zpJJ8umrYdfydtLQelqvvmi/zn18hF069W37YXSenEmNMtzVT6gmttRhrO82ilcZRsPmbnUQjUb77bBmZGX2JRmMorbpfNClwtO7WjKTckv1Tit68bRdFky+NR4sxODr5ZvuUACqJ2zKVSBInGs+TNTyjc4EkmSF9YxAh5Y/3iAnSR7M0wJlecPcogKR9IA1wVgGk/xn926J6G0B6CkCdob+4PaXJ2ZsHVG8D/Nvh+Cfk+QBd9Gl/LQAAAABJRU5ErkJggg==";
+const LOGO_FULL = "data:image/png;base64,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";
+function LogoIcon({ size=32 }) {
+  return <img src={LOGO_ICON} alt="CoachPal" style={{height:size,width:"auto",display:"block"}}/>;
+}
+function LogoFull({ height=44 }) {
+  return <img src={LOGO_FULL} alt="CoachPal" style={{height:height,width:"auto",display:"block"}}/>;
+}
 async function insertCall(teamId, record) {
   await supabase.from("call_history").insert({
     team_id: teamId,
@@ -194,7 +206,7 @@ export default function Root() {
   if(authLoading) return (
     <div style={{minHeight:"100vh",background:"#FAF6EF",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"system-ui,sans-serif"}}>
       <div style={{textAlign:"center"}}>
-        <div style={{fontSize:32,fontWeight:700,letterSpacing:2,color:"#00234D",fontFamily:"'Oswald',system-ui,sans-serif",marginBottom:12}}>COACHPAL</div>
+        <LogoFull height={40}/>
         <div style={{color:"#6B7280",fontSize:14}}>Loading…</div>
       </div>
     </div>
@@ -268,7 +280,7 @@ function LoginScreen({onSignup,onPricing}){
     <div style={{minHeight:"100vh",background:"#FAF6EF",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:20,fontFamily:"system-ui,sans-serif"}}>
       <div style={{width:"100%",maxWidth:420}}>
         <div style={{textAlign:"center",marginBottom:36}}>
-          <div style={{fontSize:42,fontWeight:700,color:"#00234D",letterSpacing:3,fontFamily:"'Oswald',system-ui,sans-serif",marginBottom:4}}>COACHPAL</div>
+          <div style={{display:"flex",justifyContent:"center",marginBottom:8}}><LogoFull height={56}/></div>
           <div style={{fontSize:12,color:"#589AE6",marginTop:4,letterSpacing:2,fontWeight:600,textTransform:"uppercase"}}>AI-Powered Football Coordinator</div>
         </div>
         <div style={{background:"#FFFFFF",border:"1px solid #E5DFD3",borderRadius:16,padding:"32px 28px"}}>
@@ -934,7 +946,7 @@ function App({session,setSession,onLogout,onBackToHub}){
   return(
     <div style={{fontFamily:"system-ui,sans-serif",minHeight:"100vh",background:"#FAF6EF",color:"#00234D"}}>
       <header style={{background:"#00234D",borderBottom:"2px solid #589AE6",padding:"11px 20px",display:"flex",alignItems:"center",gap:14}}>
-        <div style={{fontSize:22,fontWeight:800,letterSpacing:2,color:"#FFFFFF",fontFamily:"'Oswald',system-ui,sans-serif"}}>CP</div>
+        <LogoIcon size={36}/>
         <div>
           <div style={{fontSize:17,fontWeight:700,letterSpacing:1,color:"#FFFFFF",fontFamily:"'Oswald',system-ui,sans-serif"}}>CoachPal {isStaffManaged&&<span style={{fontSize:10,fontWeight:600,color:"#589AE6",letterSpacing:2}}>SCHOOL</span>}</div>
           {isStaffManaged&&activeTeam
