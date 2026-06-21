@@ -131,6 +131,34 @@ const THEME = {
   inputBorder:     "#C8BFB0",
 };
 
+// Shared SVG icon components — use instead of emojis throughout the app
+const IC = {
+  playbook:   (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>,
+  scout:      (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,
+  gameday:    (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+  athlete:    (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="23 21 23 19"/><path d="M17 11l2 2 4-4"/></svg>,
+  film:       (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>,
+  school:     (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
+  lock:       (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
+  chart:      (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>,
+  target:     (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,
+  bolt:       (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+  check:      (c="#4caf50",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
+  clock:      (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
+  trend:      (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>,
+  shield:     (c="#589AE6",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+  edit:       (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>,
+  pin:        (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>,
+  cal:        (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>,
+  video:      (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>,
+  report:     (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>,
+  strength:   (c="#4caf50",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6.5 6.5h11"/><path d="M6.5 17.5h11"/><path d="M2 12h20"/><path d="M6 6.5V17.5"/><path d="M18 6.5V17.5"/></svg>,
+  note:       (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>,
+  stopwatch:  (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 15 13"/><path d="M9 2h6"/><path d="M12 2v3"/></svg>,
+  gamepad:    (c="#00234D",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="12" rx="6"/><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><circle cx="16" cy="11" r="1" fill={c}/><circle cx="18" cy="13" r="1" fill={c}/></svg>,
+  fire:       (c="#ef5350",s=20)=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 0 1-7 7 7 7 0 0 1-7-7c0-1.61.59-3.079 1.5-4.25"/></svg>,
+};
+
 // Inject Oswald display font once
 if (typeof document !== "undefined" && !document.getElementById("cp-oswald")) {
   const s = document.createElement("style");
@@ -476,7 +504,7 @@ function SignupScreen({onBack}){
           </div>
           {/* Pro / School Hub highlight */}
           <div style={{background:"linear-gradient(135deg,#FFFBEB 0%,#F5F0E8 100%)",border:"2px solid #A87C00",borderRadius:12,padding:"18px 24px",marginBottom:24,display:"flex",gap:14,alignItems:"center"}}>
-            <div style={{fontSize:32}}>🏫</div>
+            <div style={{marginBottom:4}}>{IC.school("#00234D",32)}</div>
             <div><div style={{fontSize:15,fontWeight:800,color:"#A87C00",marginBottom:4}}>Pro works for one coach or a whole staff</div><div style={{fontSize:13,color:"#6B7280",lineHeight:1.6}}>Every Pro account can optionally build out a School Hub — invite an OC, DC, or Game Manager, and control exactly what each person can see and edit, module by module. Varsity and JV can be managed separately under one account. You don't have to set any of this up now — it's there whenever you want it.</div></div>
           </div>
           {/* Promo code */}
@@ -532,7 +560,7 @@ function SignupScreen({onBack}){
                 {PLANS.find(p=>p.id===sel)?.name} · {(()=>{const p=PLANS.find(pl=>pl.id===sel);if(p.price===0)return"Free";return annual&&p.priceAnnual?`$${p.priceAnnual}/yr (~$${Math.round(p.priceAnnual/12)}/mo)`:`$${p.price}/mo`;})()} · <span onClick={()=>setStep("plan")} style={{color:"#00234D",cursor:"pointer"}}>change plan</span>
               </div>
               {(()=>{const p=PLANS.find(pl=>pl.id===sel);return annual&&p.priceAnnual&&<div style={{marginTop:8,padding:"6px 14px",background:"#0a1a0a",border:"1px solid #4caf50",borderRadius:8,display:"inline-block",fontSize:12,color:"#4caf50",fontWeight:700}}>Annual plan — saving {Math.round((1-p.priceAnnual/(p.price*12))*100)}%</div>;})()}
-              {sel==="pro"&&<div style={{marginTop:10,padding:"8px 16px",background:"#FFFBEB",border:"1px solid #A87C00",borderRadius:8,fontSize:12,color:"#A87C00"}}>🏫 Want to add assistant coaches later? Pro includes a full School Hub you can set up anytime — no need to decide now.</div>}
+              {sel==="pro"&&<div style={{marginTop:10,padding:"8px 16px",background:"#FFFBEB",border:"1px solid #A87C00",borderRadius:8,fontSize:12,color:"#A87C00"}}>Want to add assistant coaches later? Pro includes a full School Hub you can set up anytime — no need to decide now.</div>}
             </div>
             <div style={{background:"#FFFFFF",border:"1px solid #E5DFD3",borderRadius:16,padding:"28px 24px"}}>
               <div style={{display:"grid",gap:14}}>
@@ -624,7 +652,7 @@ function PricingScreen({onBack}){
         </div>
         <div style={{background:"linear-gradient(135deg,#FFFBEB 0%,#F5F0E8 100%)",border:"2px solid #A87C00",borderRadius:14,padding:"28px 32px",marginBottom:28}}>
           <div style={{display:"flex",alignItems:"center",gap:16,flexWrap:"wrap"}}>
-            <div style={{fontSize:36}}>🏫</div>
+            <div style={{marginBottom:4}}>{IC.school("#00234D",36)}</div>
             <div style={{flex:1}}>
               <div style={{fontSize:20,fontWeight:800,color:"#A87C00",marginBottom:4}}>Pro is built for entire programs, not just one coach</div>
               <div style={{fontSize:14,color:"#6B7280",lineHeight:1.6}}>One Pro account covers your entire coaching staff — OC, DC, every position coach — each with their own login and customized module permissions set by the Head Coach. Manage Varsity and JV under one roof with a single subscription.</div>
@@ -668,12 +696,12 @@ function HomeScreen({onLogin,onSignup,onFeatures,onPricing}){
   ];
 
   const highlights = [
-    { icon:"📋", title:"Playbook Builder", desc:"Design plays visually, tag by situation, export a laminated sideline card in seconds." },
-    { icon:"🔍", title:"Opponent Scouting", desc:"Build opponent profiles and upload film. AI reads formations, coverage, and tendencies across your whole season." },
-    { icon:"🏈", title:"Game Day AI", desc:"Enter your game situation and get an instant play call — built from your actual playbook and what you know about the opponent." },
-    { icon:"💪", title:"Athlete Lab", desc:"Track combine metrics, time drills in-app, and get AI position recommendations based on real measurables." },
-    { icon:"🎬", title:"Film Room", desc:"Upload screenshots or pull frames from video. AI analyzes every snap for formation, personnel, and tendencies." },
-    { icon:"🏫", title:"School Hub", desc:"Invite your whole staff. Control who sees and edits what — OC, DC, Game Manager, position coaches — all under one account." },
+    { icon:IC.playbook("#00234D",28), title:"Playbook Builder", desc:"Design plays visually, tag by situation, export a laminated sideline card in seconds." },
+    { icon:IC.scout("#00234D",28), title:"Opponent Scouting", desc:"Build opponent profiles and upload film. AI reads formations, coverage, and tendencies across your whole season." },
+    { icon:IC.gameday("#00234D",28), title:"Game Day AI", desc:"Enter your game situation and get an instant play call — built from your actual playbook and what you know about the opponent." },
+    { icon:IC.athlete("#00234D",28), title:"Athlete Lab", desc:"Track combine metrics, time drills in-app, and get AI position recommendations based on real measurables." },
+    { icon:IC.film("#00234D",28), title:"Film Room", desc:"Upload screenshots or pull frames from video. AI analyzes every snap for formation, personnel, and tendencies." },
+    { icon:IC.school("#00234D",28), title:"School Hub", desc:"Invite your whole staff. Control who sees and edits what — OC, DC, Game Manager, position coaches — all under one account." },
   ];
 
   return(
@@ -754,7 +782,7 @@ function HomeScreen({onLogin,onSignup,onFeatures,onPricing}){
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:24}}>
             {highlights.map((h,i)=>(
               <div key={i} style={{background:"#FFFFFF",border:"1px solid #E5DFD3",borderRadius:16,padding:"28px 24px",transition:"box-shadow 0.2s"}}>
-                <div style={{fontSize:32,marginBottom:16}}>{h.icon}</div>
+                <div style={{width:48,height:48,background:"#F5F0E8",borderRadius:12,display:"flex",alignItems:"center",justifyContent:"center",marginBottom:16}}>{h.icon}</div>
                 <div style={{fontSize:17,fontWeight:700,color:"#00234D",marginBottom:8,fontFamily:"'Oswald',system-ui,sans-serif"}}>{h.title}</div>
                 <div style={{fontSize:14,color:"#6B7280",lineHeight:1.65}}>{h.desc}</div>
               </div>
@@ -946,7 +974,7 @@ function SchoolHub({session,setSession,onLogout}){
     <div style={{minHeight:"100vh",background:"#FAF6EF",fontFamily:"system-ui,sans-serif",color:"#00234D"}}>
       {/* Header */}
       <header style={{background:"linear-gradient(135deg,#0d1230 0%,#FFFBEB 100%)",borderBottom:"2px solid #A87C00",padding:"12px 24px",display:"flex",alignItems:"center",gap:14}}>
-        <div style={{fontSize:26}}>🏈</div>
+        <div style={{marginBottom:8}}>{IC.school("#00234D",26)}</div>
         <div>
           <div style={{fontSize:18,fontWeight:800,color:"#A87C00",letterSpacing:1}}>CoachPal <span style={{fontSize:10,fontWeight:600,color:"#6B7280",letterSpacing:2}}>SCHOOL HUB</span></div>
           <div style={{fontSize:12,fontWeight:700,color:"#00234D"}}>{school.name}</div>
@@ -974,7 +1002,7 @@ function SchoolHub({session,setSession,onLogout}){
         {view==="dashboard"&&(
           <div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:14,marginBottom:24}}>
-              {[["","Staff",school.staff.length,"coaches on staff"],["","Teams",school.teams.length,"programs"],["⭐","Plan","Pro","School Hub Active"],["","Billing",session.billingPeriod==="annual"?"Annual":"Monthly",session.billingPeriod==="annual"?"$499/yr · best value":"$49/mo"]].map(([icon,label,val,sub])=>(
+              {[["","Staff",school.staff.length,"coaches on staff"],["","Teams",school.teams.length,"programs"],["","Plan","Pro","School Hub Active"],["","Billing",session.billingPeriod==="annual"?"Annual":"Monthly",session.billingPeriod==="annual"?"$499/yr · best value":"$49/mo"]].map(([icon,label,val,sub])=>(
                 <div key={label} style={{background:"#FFFFFF",border:"1px solid #E5DFD3",borderRadius:12,padding:"18px 20px"}}>
                   <div style={{fontSize:22,marginBottom:4}}>{icon}</div>
                   <div style={{fontSize:11,color:"#6B7280",letterSpacing:1,textTransform:"uppercase"}}>{label}</div>
@@ -989,7 +1017,7 @@ function SchoolHub({session,setSession,onLogout}){
               <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
                 {school.teams.map(team=>(
                   <button key={team.id} onClick={()=>enterApp(team.id)} style={{padding:"16px 28px",borderRadius:10,border:"2px solid #A87C00",background:"linear-gradient(135deg,#FFFBEB 0%,#F5F0E8 100%)",color:"#A87C00",fontWeight:800,fontSize:16,cursor:"pointer",display:"flex",alignItems:"center",gap:10}}>
-                    🏈 Open {team.name} <span style={{fontSize:11,color:"#6B7280",fontWeight:400}}>({team.level})</span>
+                    Open {team.name} <span style={{fontSize:11,color:"#6B7280",fontWeight:400}}>({team.level})</span>
                   </button>
                 ))}
               </div>
@@ -1241,8 +1269,8 @@ function App({session,setSession,onLogout,onBackToHub}){
             <span>Players: <b style={{color:accentColor}}>{roster.length}</b></span>
             <span>Snaps: <b style={{color:accentColor}}>{filmSnaps.length}</b></span>
           </div>
-          {isStaffManaged&&onBackToHub&&<button onClick={onBackToHub} style={{padding:"6px 12px",borderRadius:7,border:`1px solid ${accentColor}`,background:"transparent",color:accentColor,fontSize:11,cursor:"pointer",fontWeight:700}}>🏫 School Hub</button>}
-          {isPro&&!isStaffManaged&&<button onClick={()=>setShowCreateSchool(true)} style={{padding:"6px 12px",borderRadius:7,border:"1px solid #E5DFD3",background:"transparent",color:"#6B7280",fontSize:11,cursor:"pointer",fontWeight:700}}>🏫 Set Up School Hub</button>}
+          {isStaffManaged&&onBackToHub&&<button onClick={onBackToHub} style={{padding:"6px 12px",borderRadius:7,border:`1px solid ${accentColor}`,background:"transparent",color:accentColor,fontSize:11,cursor:"pointer",fontWeight:700}}>School Hub</button>}
+          {isPro&&!isStaffManaged&&<button onClick={()=>setShowCreateSchool(true)} style={{padding:"6px 12px",borderRadius:7,border:"1px solid #E5DFD3",background:"transparent",color:"#6B7280",fontSize:11,cursor:"pointer",fontWeight:700}}>Set Up School Hub</button>}
           <button onClick={()=>setLiveMode(true)} style={{padding:"6px 14px",borderRadius:7,border:"none",background:"#00234D",color:"#fff",fontSize:11,cursor:"pointer",fontWeight:800,letterSpacing:0.5,display:"flex",alignItems:"center",gap:5}}>
             <span style={{width:7,height:7,borderRadius:"50%",background:"#ff4444",display:"inline-block",animation:"pulse 1s infinite"}}/>
             LIVE GAME
@@ -1267,7 +1295,7 @@ function App({session,setSession,onLogout,onBackToHub}){
                   <div style={{fontSize:11,color:"#6B7280",marginBottom:2}}>Plan</div>
                   <div style={{fontSize:13,fontWeight:700,color:plan.color}}>{plan.name}{plan.price>0?` — ${session.billingPeriod==="annual"&&plan.priceAnnual?"$"+plan.priceAnnual+"/yr":"$"+plan.price+"/mo"}`:""}</div>
                 </div>
-                {isPro&&!isStaffManaged&&<div style={{padding:"6px 16px"}}><button onClick={()=>{setShowUserMenu(false);setShowCreateSchool(true);}} style={{width:"100%",padding:"7px 10px",borderRadius:6,border:"1px solid #A87C00",background:"transparent",color:"#A87C00",fontSize:11,fontWeight:700,cursor:"pointer"}}>🏫 Set Up School Hub</button></div>}
+                {isPro&&!isStaffManaged&&<div style={{padding:"6px 16px"}}><button onClick={()=>{setShowUserMenu(false);setShowCreateSchool(true);}} style={{width:"100%",padding:"7px 10px",borderRadius:6,border:"1px solid #A87C00",background:"transparent",color:"#A87C00",fontSize:11,fontWeight:700,cursor:"pointer"}}>Set Up School Hub</button></div>}
                 {readOnly&&canAccess(tab)&&<div style={{margin:"4px 16px 6px",padding:"6px 10px",background:"#FFFBEB",borderRadius:6,border:"1px solid #A87C00",fontSize:11,color:"#A87C00"}}>👁 View-only on this tab</div>}
                 <div style={{borderTop:"1px solid #E5DFD3",marginTop:4,padding:"4px 0"}}>
                   <button onClick={()=>{setShowUserMenu(false);onLogout();}} style={{width:"100%",padding:"9px 16px",background:"transparent",border:"none",color:"#ef5350",fontSize:13,cursor:"pointer",textAlign:"left",fontWeight:600}}>Sign Out</button>
@@ -1291,7 +1319,7 @@ function App({session,setSession,onLogout,onBackToHub}){
           return(
             <button key={i} onClick={()=>accessible&&setTab(i)} style={{padding:"11px 16px",background:tab===i?"#00234D":"transparent",border:"none",borderBottom:"none",color:!accessible?"#C8BFB0":tab===i?"#FFFFFF":"#6B7280",cursor:accessible?"pointer":"not-allowed",fontSize:12,fontWeight:600,whiteSpace:"nowrap",letterSpacing:0.5,fontFamily:"'Oswald',system-ui,sans-serif",textTransform:"uppercase"}} title={!accessible?(isStaffManaged?"No access — contact Head Coach":"Upgrade to unlock"):(!editable?"View only":"")}>
               {t}
-              {!accessible&&<span style={{fontSize:9,marginLeft:3}}>🔒</span>}
+              {!accessible&&<span style={{marginLeft:3,display:"inline-flex",verticalAlign:"middle"}}>{IC.lock("#C8BFB0",10)}</span>}
               {accessible&&!editable&&<span style={{fontSize:9,marginLeft:3,opacity:0.6}}>●</span>}
             </button>
           );
@@ -1311,7 +1339,7 @@ function App({session,setSession,onLogout,onBackToHub}){
 
         {!canAccess(tab)&&(
           <div style={{textAlign:"center",padding:"80px 20px"}}>
-            <div style={{fontSize:48,marginBottom:16}}>🔒</div>
+            <div style={{marginBottom:16}}>{IC.lock("#00234D",48)}</div>
             <div style={{fontSize:22,fontWeight:700,color:"#00234D",marginBottom:8}}>{isStaffManaged?"Access Restricted":"Upgrade to unlock this feature"}</div>
             <div style={{fontSize:14,color:"#6B7280",marginBottom:24,maxWidth:440,margin:"0 auto 24px"}}>
               {isStaffManaged?"Your Head Coach hasn't granted you access to this module. Reach out to have your permissions updated.":
@@ -1380,7 +1408,7 @@ function CreateSchoolModal({ session, onClose, onCreate }) {
   return (
     <div style={{ position:"fixed", inset:0, background:"rgba(0,0,0,0.8)", zIndex:1500, display:"flex", alignItems:"center", justifyContent:"center", padding:20 }} onClick={onClose}>
       <div style={{ background:"#FFFFFF", border:"2px solid #A87C00", borderRadius:16, maxWidth:440, width:"100%", padding:"26px 24px" }} onClick={e=>e.stopPropagation()}>
-        <div style={{ fontSize:32, marginBottom:10 }}>🏫</div>
+        <div style={{ marginBottom:10 }}>{IC.school("#00234D",32)}</div>
         <div style={{ fontSize:20, fontWeight:800, color:"#00234D", marginBottom:6 }}>Set up your School Hub</div>
         <div style={{ fontSize:13, color:"#6B7280", lineHeight:1.6, marginBottom:18 }}>This creates a shared workspace where you can invite an OC, DC, Game Manager, or any assistant coach — and control exactly what each person can see and edit. Varsity and JV will be created automatically; you can rename or add teams later.</div>
         <div style={{ marginBottom:6, fontSize:12, color:"#6B7280" }}>School / Program Name</div>
@@ -1892,8 +1920,8 @@ Return ONLY JSON:
           {/* Quick action buttons */}
           <div style={{ display: "flex", gap: 6, flexDirection: "column" }}>
             <div style={{ display: "flex", gap: 6 }}>
-              <button onClick={() => { setPossession("us"); }} style={{ padding: "6px 10px", borderRadius: 6, border: `1px solid ${possession === "us" ? "#4caf50" : "#E5DFD3"}`, background: possession === "us" ? "#0d2b0d" : "transparent", color: possession === "us" ? "#4caf50" : "#9CA3AF", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>🏈 OUR BALL</button>
-              <button onClick={() => { setPossession("them"); }} style={{ padding: "6px 10px", borderRadius: 6, border: `1px solid ${possession === "them" ? "#ef5350" : "#E5DFD3"}`, background: possession === "them" ? "#FEF0F0" : "transparent", color: possession === "them" ? "#ef5350" : "#9CA3AF", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>🏈 THEIR BALL</button>
+              <button onClick={() => { setPossession("us"); }} style={{ padding: "6px 10px", borderRadius: 6, border: `1px solid ${possession === "us" ? "#4caf50" : "#E5DFD3"}`, background: possession === "us" ? "#0d2b0d" : "transparent", color: possession === "us" ? "#4caf50" : "#9CA3AF", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>OUR BALL</button>
+              <button onClick={() => { setPossession("them"); }} style={{ padding: "6px 10px", borderRadius: 6, border: `1px solid ${possession === "them" ? "#ef5350" : "#E5DFD3"}`, background: possession === "them" ? "#FEF0F0" : "transparent", color: possession === "them" ? "#ef5350" : "#9CA3AF", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>THEIR BALL</button>
             </div>
             <div style={{ display: "flex", gap: 6 }}>
               <button onClick={firstDown} style={{ padding: "6px 10px", borderRadius: 6, border: "1px solid #E5DFD3", background: "#FFFFFF", color: "#4caf50", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>✓ 1ST DOWN</button>
@@ -1915,7 +1943,7 @@ Return ONLY JSON:
                 {voiceActive ? "LISTENING — speak your game update" : "Voice Input — tap mic and speak"}
               </div>
               {voiceTranscript && <div style={{ fontSize: 13, color: "#00234D", fontStyle: "italic" }}>"{voiceTranscript}"</div>}
-              {voiceParsing && <div style={{ fontSize: 11, color: "#A87C00" }}>⚙️ Parsing update…</div>}
+              {voiceParsing && <div style={{ fontSize: 11, color: "#A87C00" }}>Parsing update…</div>}
               {!voiceActive && !voiceTranscript && <div style={{ fontSize: 11, color: "#9CA3AF" }}>Say: "2nd and 6 our 40" · "touchdown us" · "field goal them" · "4th quarter 2 minutes"</div>}
             </div>
           </div>
@@ -1953,21 +1981,21 @@ Return ONLY JSON:
 
             {aiPlay.clockAdvice && (
               <div style={{ background: "rgba(200,160,32,0.1)", borderRadius: 8, padding: "8px 12px", marginBottom: 8, borderLeft: "3px solid #A87C00" }}>
-                <div style={{ fontSize: 11, color: "#A87C00", fontWeight: 700, marginBottom: 3 }}>⏱ CLOCK MANAGEMENT</div>
+                <div style={{ fontSize: 11, color: "#A87C00", fontWeight: 700, marginBottom: 3 }}>CLOCK MANAGEMENT</div>
                 <div style={{ fontSize: 13, color: "#374151" }}>{aiPlay.clockAdvice}</div>
               </div>
             )}
 
             {aiPlay.keyMatchup && (
               <div style={{ background: "rgba(76,175,80,0.1)", borderRadius: 8, padding: "8px 12px", marginBottom: 8, borderLeft: "3px solid #4caf50" }}>
-                <div style={{ fontSize: 11, color: "#4caf50", fontWeight: 700, marginBottom: 3 }}>🎯 KEY MATCHUP</div>
+                <div style={{ fontSize: 11, color: "#4caf50", fontWeight: 700, marginBottom: 3 }}>KEY MATCHUP</div>
                 <div style={{ fontSize: 13, color: "#374151" }}>{aiPlay.keyMatchup}</div>
               </div>
             )}
 
             {aiPlay.audible && (
               <div style={{ background: "rgba(91,141,184,0.1)", borderRadius: 8, padding: "8px 12px", marginBottom: 12, borderLeft: "3px solid #589AE6" }}>
-                <div style={{ fontSize: 11, color: "#589AE6", fontWeight: 700, marginBottom: 3 }}>⚡ AUDIBLE</div>
+                <div style={{ fontSize: 11, color: "#589AE6", fontWeight: 700, marginBottom: 3 }}>AUDIBLE</div>
                 <div style={{ fontSize: 13, color: "#374151" }}>{aiPlay.audible}</div>
               </div>
             )}
@@ -1984,7 +2012,7 @@ Return ONLY JSON:
         {/* Locked play toast */}
         {playLocked && (
           <div style={{ background: "#F0F7F0", border: "2px solid #4caf50", borderRadius: 10, padding: "12px 16px", marginBottom: 12, display: "flex", alignItems: "center", gap: 12 }}>
-            <span style={{ fontSize: 20 }}>✅</span>
+            <span style={{ display:"inline-flex" }}>{IC.check("#4caf50",20)}</span>
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 10, color: "#4caf50", fontWeight: 700 }}>PLAY CALLED</div>
               <div style={{ fontSize: 18, fontWeight: 800, color: "#00234D" }}>{playLocked.play}</div>
@@ -2264,7 +2292,7 @@ Build a comprehensive tendency report that accounts for the season-long trend, w
         <>
           {/* Snap context */}
           <Card>
-            <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", marginBottom: 10, letterSpacing: 1 }}>📌 SNAP CONTEXT</div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", marginBottom: 10, letterSpacing: 1 }}>SNAP CONTEXT</div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr", gap: 10 }}>
               <Input label="Week #" value={snapContext.week} onChange={v => setSnapContext(s => ({ ...s, week: v }))} placeholder="e.g. 3" />
               <Input label="Down" value={snapContext.down} onChange={v => setSnapContext(s => ({ ...s, down: v }))} placeholder="e.g. 3" />
@@ -2276,7 +2304,7 @@ Build a comprehensive tendency report that accounts for the season-long trend, w
                 <option value="both">Both</option>
               </Select>
             </div>
-            <div style={{ marginTop: 8, fontSize: 11, color: "#9CA3AF" }}>📅 Tag every upload with the week number so CoachPal can track how {activeOpponent}'s tendencies evolve across the season — not just one game.</div>
+            <div style={{ marginTop: 8, fontSize: 11, color: "#9CA3AF" }}>Tag every upload with the week number so CoachPal can track how {activeOpponent}'s tendencies evolve across the season — not just one game.</div>
           </Card>
 
           {/* Upload zone */}
@@ -2344,7 +2372,7 @@ Build a comprehensive tendency report that accounts for the season-long trend, w
             <Card>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
                 <div>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", letterSpacing: 1 }}>📊 TENDENCY REPORT</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", letterSpacing: 1 }}>TENDENCY REPORT</div>
                   <div style={{ fontSize: 12, color: "#6B7280", marginTop: 2 }}>AI synthesizes all {opponentSnaps.length} snaps into a full coordinator report</div>
                 </div>
                 <ActionButton onClick={buildTendencyReport} primary disabled={buildingReport}>
@@ -2370,7 +2398,7 @@ Build a comprehensive tendency report that accounts for the season-long trend, w
                   {/* Weekly trend chart */}
                   {tendencyReport.weeklyTrend?.length > 1 && (
                     <div style={{ background: "#F5F0E8", borderRadius: 10, padding: "14px 16px", marginBottom: 14 }}>
-                      <div style={{ fontSize: 12, fontWeight: 700, color: "#00234D", marginBottom: 4, letterSpacing: 1 }}>📈 SEASON TREND</div>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: "#00234D", marginBottom: 4, letterSpacing: 1 }}>SEASON TREND</div>
                       {tendencyReport.trendSummary && <div style={{ fontSize: 12, color: "#6B7280", marginBottom: 12, lineHeight: 1.5 }}>{tendencyReport.trendSummary}</div>}
                       <div style={{ display: "flex", gap: 10, alignItems: "flex-end", height: 90, marginBottom: 6 }}>
                         {tendencyReport.weeklyTrend.map((w, i) => (
@@ -2420,7 +2448,7 @@ Build a comprehensive tendency report that accounts for the season-long trend, w
                     {/* Defensive tendencies */}
                     {tendencyReport.defensiveTendencies && (
                       <div style={{ background: "#F5F0E8", borderRadius: 10, padding: "12px 14px" }}>
-                        <div style={{ fontSize: 12, fontWeight: 700, color: "#589AE6", marginBottom: 8, letterSpacing: 1 }}>🛡️ THEIR DEFENSE</div>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: "#589AE6", marginBottom: 8, letterSpacing: 1 }}>THEIR DEFENSE</div>
                         <StatRow label="Base Coverage" value={tendencyReport.defensiveTendencies.baseCoverage} />
                         <StatRow label="Front" value={tendencyReport.defensiveTendencies.frontAlignment} />
                         <StatRow label="Blitz Rate" value={tendencyReport.defensiveTendencies.blitzRate} />
@@ -2443,7 +2471,7 @@ Build a comprehensive tendency report that accounts for the season-long trend, w
                   {/* Exploitable weaknesses */}
                   {tendencyReport.exploitableWeaknesses?.length > 0 && (
                     <div style={{ marginTop: 12, background: "#EFF6FF", borderRadius: 10, padding: "12px 14px" }}>
-                      <div style={{ fontSize: 12, fontWeight: 700, color: "#4caf50", marginBottom: 8, letterSpacing: 1 }}>🎯 EXPLOITABLE WEAKNESSES</div>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: "#4caf50", marginBottom: 8, letterSpacing: 1 }}>EXPLOITABLE WEAKNESSES</div>
                       {tendencyReport.exploitableWeaknesses.map((w, i) => (
                         <div key={i} style={{ fontSize: 12, color: "#374151", marginBottom: 5, paddingLeft: 10, borderLeft: "2px solid #4caf50" }}>✓ {w}</div>
                       ))}
@@ -2452,13 +2480,13 @@ Build a comprehensive tendency report that accounts for the season-long trend, w
                   {/* Recommended attacks */}
                   {tendencyReport.recommendedAttacks?.length > 0 && (
                     <div style={{ marginTop: 10, background: "#1a2200", borderRadius: 10, padding: "12px 14px" }}>
-                      <div style={{ fontSize: 12, fontWeight: 700, color: "#00234D", marginBottom: 8, letterSpacing: 1 }}>⚡ RECOMMENDED ATTACKS</div>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: "#00234D", marginBottom: 8, letterSpacing: 1 }}>RECOMMENDED ATTACKS</div>
                       {tendencyReport.recommendedAttacks.map((a, i) => (
                         <div key={i} style={{ fontSize: 12, color: "#374151", marginBottom: 5, paddingLeft: 10, borderLeft: "2px solid #00234D" }}>→ {a}</div>
                       ))}
                     </div>
                   )}
-                  <div style={{ marginTop: 8, fontSize: 11, color: "#4caf50" }}>✅ Findings pushed to Scouting Report for this opponent</div>
+                  <div style={{ marginTop: 8, fontSize: 11, color: "#4caf50" }}>Findings pushed to Scouting Report for this opponent</div>
                 </div>
               )}
             </Card>
@@ -2477,7 +2505,7 @@ Build a comprehensive tendency report that accounts for the season-long trend, w
                     {snap.imageData ? (
                       <img src={snap.imageData} alt={snap.imageName} style={{ width: "100%", height: 110, objectFit: "cover" }} />
                     ) : (
-                      <div style={{ width: "100%", height: 110, background: "#F5F0E8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24 }}>🎬</div>
+                      <div style={{ width: "100%", height: 110, background: "#F5F0E8", display: "flex", alignItems: "center", justifyContent: "center" }}>{IC.film("#C8BFB0",36)}</div>
                     )}
                     <div style={{ padding: "8px 10px" }}>
                       <div style={{ fontSize: 12, fontWeight: 700, color: "#00234D" }}>{snap.analysis.formation}</div>
@@ -2719,7 +2747,7 @@ Analyze speed ratings, strength, football IQ, positions available, and health. R
 
     win.document.write(`<!DOCTYPE html><html><head><title>${schoolName} Playbook</title><style>${css}</style></head><body>
       <div class="cover">
-        <div style="font-size:64px;margin-bottom:16px;">🏈</div>
+        <div style="margin-bottom:16px;display:flex;justify-content:center;">${IC.gameday("#00234D",64)}</div>
         <h1>${schoolName}</h1>
         <p>Official Playbook · ${plays.length} Plays · ${new Date().toLocaleDateString()}</p>
         <p style="margin-top:8px;font-size:14px;color:#9CA3AF;">CONFIDENTIAL — Do not distribute without authorization</p>
@@ -2797,14 +2825,14 @@ Analyze speed ratings, strength, football IQ, positions available, and health. R
                 <div style={{flex:1}}>
                   <div style={{fontWeight:700,fontSize:14,display:"flex",alignItems:"center",gap:8}}>
                     {play.name}
-                    {play.diagram&&<span style={{fontSize:10,padding:"2px 6px",background:"#EFF6FF",color:"#589AE6",borderRadius:6,fontWeight:700}}>✏️ DIAGRAM</span>}
+                    {play.diagram&&<span style={{fontSize:10,padding:"2px 6px",background:"#EFF6FF",color:"#589AE6",borderRadius:6,fontWeight:700}}>DIAGRAM</span>}
                     {play.package&&<span style={{fontSize:10,padding:"2px 6px",background:"#FFFBEB",color:"#A87C00",borderRadius:6,fontWeight:700}}>{play.package}</span>}
                   </div>
                   <div style={{fontSize:12,color:"#6B7280",marginTop:2}}>{play.formation}{play.situation&&` · ${play.situation}`}{play.downAndDistance&&` · ${play.downAndDistance}`}</div>
                   {play.description&&<div style={{fontSize:12,color:"#9CA3AF",marginTop:4,lineHeight:1.5}}>{play.description}</div>}
                 </div>
                 <div style={{display:"flex",gap:6,flexShrink:0}}>
-                  <SmallBtn onClick={()=>{startEdit(play);setPbView("builder");}}>✏️ Draw</SmallBtn>
+                  <SmallBtn onClick={()=>{startEdit(play);setPbView("builder");}}>Draw</SmallBtn>
                   <SmallBtn onClick={()=>startEdit(play)}>Edit</SmallBtn>
                   <SmallBtn onClick={()=>deletePlay(play.id)} danger>Del</SmallBtn>
                 </div>
@@ -2931,7 +2959,7 @@ Analyze speed ratings, strength, football IQ, positions available, and health. R
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:16}}>
                 {schemes.strengthsToExploit?.length>0&&(
                   <div style={{background:"#F0F7F0",border:"1px solid #2E7D32",borderRadius:12,padding:"14px 16px"}}>
-                    <div style={{fontSize:11,color:"#4caf50",fontWeight:700,letterSpacing:1,marginBottom:8}}>💪 STRENGTHS TO BUILD ON</div>
+                    <div style={{fontSize:11,color:"#4caf50",fontWeight:700,letterSpacing:1,marginBottom:8}}>STRENGTHS TO BUILD ON</div>
                     {schemes.strengthsToExploit.map((s,i)=><div key={i} style={{fontSize:12,color:"#374151",marginBottom:5,paddingLeft:10,borderLeft:"2px solid #4caf50"}}>✓ {s}</div>)}
                   </div>
                 )}
@@ -3077,7 +3105,7 @@ function PlayBuilder({ play, playbook, onSave, onSelectPlay }) {
               <div key={p.id} onClick={()=>{setSelectedPlay(p);onSelectPlay(p);}} style={{padding:"8px 10px",background:selectedPlay?.id===p.id?"#EFF6FF":"#FFFFFF",border:`1px solid ${selectedPlay?.id===p.id?"#00234D":"#E5DFD3"}`,borderRadius:7,cursor:"pointer"}}>
                 <div style={{fontSize:12,fontWeight:700,color:"#00234D"}}>{p.name}</div>
                 <div style={{fontSize:10,color:"#6B7280"}}>{p.formation||"No formation"} · {p.type}</div>
-                {p.diagram&&<div style={{fontSize:9,color:"#589AE6",marginTop:2}}>✏️ has diagram</div>}
+                {p.diagram&&<div style={{fontSize:9,color:"#589AE6",marginTop:2}}>has diagram</div>}
               </div>
             ))}
             {playbook.length===0&&<div style={{fontSize:12,color:"#9CA3AF",padding:8}}>No plays yet. Add plays in the Plays view first.</div>}
@@ -3498,9 +3526,9 @@ function ScoutTab({ opponents, setOpponents, season, setSeason, filmSnaps, sessi
 
       {/* View toggle */}
       <div style={{ display: "flex", gap: 8, marginBottom: 16, alignItems: "center" }}>
-        <button onClick={() => setView("schedule")} style={{ padding: "8px 16px", borderRadius: 8, border: "2px solid", borderColor: view==="schedule"?"#00234D":"#E5DFD3", background: view==="schedule"?"#EFF6FF":"transparent", color: view==="schedule"?"#00234D":"#6B7280", fontWeight: 700, fontSize: 12, cursor: "pointer" }}>📅 Season Schedule</button>
+        <button onClick={() => setView("schedule")} style={{ padding: "8px 16px", borderRadius: 8, border: "2px solid", borderColor: view==="schedule"?"#00234D":"#E5DFD3", background: view==="schedule"?"#EFF6FF":"transparent", color: view==="schedule"?"#00234D":"#6B7280", fontWeight: 700, fontSize: 12, cursor: "pointer" }}>Season Schedule</button>
         <button onClick={() => activeOpponentName && setView("file")} disabled={!activeOpponentName} style={{ padding: "8px 16px", borderRadius: 8, border: "2px solid", borderColor: view==="file"?"#00234D":"#E5DFD3", background: view==="file"?"#EFF6FF":"transparent", color: !activeOpponentName?"#3a4060":view==="file"?"#00234D":"#6B7280", fontWeight: 700, fontSize: 12, cursor: activeOpponentName?"pointer":"not-allowed" }}>📁 Opponent File {activeOpponentName?`— ${activeOpponentName}`:""}</button>
-        {season.length > 0 && <button onClick={() => setWizardOpen(true)} style={{ marginLeft: "auto", padding: "8px 14px", borderRadius: 8, border: "1px solid #E5DFD3", background: "transparent", color: "#589AE6", fontWeight: 600, fontSize: 12, cursor: "pointer" }}>✨ Re-run Season Setup</button>}
+        {season.length > 0 && <button onClick={() => setWizardOpen(true)} style={{ marginLeft: "auto", padding: "8px 14px", borderRadius: 8, border: "1px solid #E5DFD3", background: "transparent", color: "#589AE6", fontWeight: 600, fontSize: 12, cursor: "pointer" }}>Re-run Season Setup</button>}
       </div>
 
       {/* ═══ SEASON SCHEDULE ═══ */}
@@ -3509,12 +3537,12 @@ function ScoutTab({ opponents, setOpponents, season, setSeason, filmSnaps, sessi
           {/* Setup wizard CTA */}
           {season.length === 0 && (
             <div style={{ background: "linear-gradient(135deg,#F5F0E8 0%,#1a0d20 100%)", border: "2px solid #00234D", borderRadius: 14, padding: "20px 24px", marginBottom: 16, display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
-              <div style={{ fontSize: 32 }}>🏈</div>
+              <div style={{ marginBottom:8 }}>{IC.cal("#C8BFB0",32)}</div>
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 16, fontWeight: 800, color: "#00234D", marginBottom: 4 }}>Set up your season in one step</div>
                 <div style={{ fontSize: 13, color: "#6B7280" }}>Tell CoachPal what school you coach, and we'll try to find your team's actual schedule and pre-fill it for you to review.</div>
               </div>
-              <ActionButton primary onClick={() => setWizardOpen(true)} style={{ fontSize: 14, padding: "11px 22px" }}>✨ Set Up My Season</ActionButton>
+              <ActionButton primary onClick={() => setWizardOpen(true)} style={{ fontSize: 14, padding: "11px 22px" }}>Set Up My Season</ActionButton>
             </div>
           )}
 
@@ -3552,7 +3580,7 @@ function ScoutTab({ opponents, setOpponents, season, setSeason, filmSnaps, sessi
                     ) : (
                       <>
                         <div style={{ fontWeight: 700, fontSize: 14, color: "#00234D" }}>{w.homeAway === "home" ? "vs" : "@"} {w.opponentName}</div>
-                        <div style={{ fontSize: 11, color: "#6B7280", marginTop: 2 }}>{w.date}{w.result && ` · ${w.result}`}{snapCount > 0 && ` · 🎬 ${snapCount} snaps tagged`}</div>
+                        <div style={{ fontSize: 11, color: "#6B7280", marginTop: 2 }}>{w.date}{w.result && ` · ${w.result}`}{snapCount > 0 && ` · ${snapCount} snaps tagged`}</div>
                       </>
                     )}
                   </div>
@@ -3611,7 +3639,7 @@ function ScoutTab({ opponents, setOpponents, season, setSeason, filmSnaps, sessi
           {/* Scouting report */}
           <Card>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", letterSpacing: 1 }}>📋 SCOUTING REPORT</div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", letterSpacing: 1 }}>SCOUTING REPORT</div>
               <SmallBtn onClick={() => setEditingReport(e => !e)}>{editingReport ? "Done" : "Edit"}</SmallBtn>
             </div>
 
@@ -3658,7 +3686,7 @@ function ScoutTab({ opponents, setOpponents, season, setSeason, filmSnaps, sessi
 
           {/* Their game log (our record vs them / their season) */}
           <Card>
-            <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", marginBottom: 12, letterSpacing: 1 }}>📊 {activeOpponentName}'S SEASON — GAME LOG</div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", marginBottom: 12, letterSpacing: 1 }}>{activeOpponentName}'S SEASON — GAME LOG</div>
             <div style={{ display: "grid", gridTemplateColumns: "0.6fr 1.6fr 0.9fr 0.9fr 1.4fr", gap: 10, marginBottom: 10 }}>
               <Input label="Week" value={gameLogForm.week} onChange={v => setGameLogForm(f => ({ ...f, week: v }))} placeholder="1" />
               <Input label="They Played" value={gameLogForm.opponent} onChange={v => setGameLogForm(f => ({ ...f, opponent: v }))} placeholder="e.g. Halls" />
@@ -3879,7 +3907,7 @@ Return ONLY this JSON:
       <SectionHeader icon="" title="Game Day" subtitle="Real-time AI coordinator — live play recommendations powered by playbook, roster & film" />
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
         <Card>
-          <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", marginBottom: 12, letterSpacing: 1 }}>⏱ GAME STATE</div>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", marginBottom: 12, letterSpacing: 1 }}>GAME STATE</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             <Select label="Quarter" value={gameState.quarter} onChange={v=>updateGS("quarter",+v)}>{[1,2,3,4,"OT"].map(q=><option key={q} value={q}>Q{q}</option>)}</Select>
             <Input label="Time Remaining" value={gameState.time} onChange={v=>updateGS("time",v)} />
@@ -3890,7 +3918,7 @@ Return ONLY this JSON:
           </div>
         </Card>
         <Card>
-          <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", marginBottom: 12, letterSpacing: 1 }}>📊 SCORE & TIMEOUTS</div>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", marginBottom: 12, letterSpacing: 1 }}>SCORE & TIMEOUTS</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 12 }}>
             {["us","them"].map(team=>(
               <div key={team}>
@@ -3917,7 +3945,7 @@ Return ONLY this JSON:
         </Card>
       </div>
       <Card style={{ marginTop: 12 }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", marginBottom: 12, letterSpacing: 1 }}>🎯 COORDINATOR CALL</div>
+        <div style={{ fontSize: 13, fontWeight: 700, color: "#00234D", marginBottom: 12, letterSpacing: 1 }}>COORDINATOR CALL</div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 2fr", gap: 12 }}>
           <Select label="Mode" value={mode} onChange={setMode}><option value="offense">Offensive Coordinator</option><option value="defense">Defensive Coordinator</option></Select>
           <Select label="Opponent" value={selectedOpponent} onChange={setSelectedOpponent}>
@@ -4272,7 +4300,7 @@ If no plays exist in playbook for a category, invent plausible high school footb
       {/* ── CHECK WITH ME play ── */}
       {card?.checkWithMePlay && (
         <div style={{ background: "linear-gradient(135deg, #FEF0F0 0%, #2a1020 100%)", border: "2px solid #ff6d00", borderRadius: 12, padding: "12px 16px", marginBottom: 12, display: "flex", alignItems: "center", gap: 14, cursor: "pointer" }} onClick={() => setActivePlay(card.checkWithMePlay)}>
-          <div style={{ fontSize: 28 }}>🔥</div>
+          <div style={{ marginBottom:4 }}>{IC.fire("#ef5350",28)}</div>
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: 10, color: "#ff6d00", fontWeight: 700, letterSpacing: 2 }}>CHECK WITH ME — CALL THIS NOW</div>
             <div style={{ fontSize: 20, fontWeight: 800, color: "#ffffff", marginTop: 2 }}>{card.checkWithMePlay.name}</div>
@@ -4285,7 +4313,7 @@ If no plays exist in playbook for a category, invent plausible high school footb
       {/* ── Vulnerability strip ── */}
       {card?.opponentVulnerability && (
         <div style={{ background: "#EFF6FF", border: "1px solid #1e3060", borderRadius: 10, padding: "8px 14px", marginBottom: 12, display: "flex", alignItems: "center", gap: 8 }}>
-          <span style={{ fontSize: 16 }}>🎯</span>
+          <span style={{ display:"inline-flex" }}>{IC.target("#00234D",16)}</span>
           <span style={{ fontSize: 11, color: "#4caf50", fontWeight: 700, letterSpacing: 1 }}>ATTACK: </span>
           <span style={{ fontSize: 13, color: "#374151" }}>{card.opponentVulnerability}</span>
           {filmInsightCount > 0 && <span style={{ marginLeft: "auto", fontSize: 11, color: "#4caf50", padding: "2px 8px", borderRadius: 10, background: "#EFF6FF" }}>📽 {filmInsightCount} film snaps</span>}
@@ -4295,7 +4323,7 @@ If no plays exist in playbook for a category, invent plausible high school footb
       {/* ── Audibles strip ── */}
       {card?.audibles?.length > 0 && (
         <div style={{ background: "#F5F5FF", border: "1px solid #E5DFD3", borderRadius: 10, padding: "8px 14px", marginBottom: 12, display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
-          <span style={{ fontSize: 11, color: "#589AE6", fontWeight: 700, letterSpacing: 1, flexShrink: 0 }}>⚡ AUDIBLES:</span>
+          <span style={{ fontSize: 11, color: "#589AE6", fontWeight: 700, letterSpacing: 1, flexShrink: 0 }}>AUDIBLES:</span>
           {card.audibles.map((a, i) => <span key={i} style={{ fontSize: 12, color: "#6B7280" }}>• {a}</span>)}
         </div>
       )}
@@ -4362,7 +4390,7 @@ If no plays exist in playbook for a category, invent plausible high school footb
           <div style={{ fontSize: 48, marginBottom: 12 }}>🃏</div>
           <div style={{ fontSize: 18, fontWeight: 700, color: "#00234D", marginBottom: 8 }}>Your AI Play Card</div>
           <div style={{ fontSize: 14, color: "#6B7280", marginBottom: 20, maxWidth: 400, margin: "0 auto 20px" }}>Set up your game state above, optionally select an opponent, then generate your personalized play card. It will auto-highlight the right section based on your live down & distance.</div>
-          <ActionButton onClick={generateCard} primary style={{ fontSize: 15, padding: "12px 28px" }}>⚡ Generate Play Card</ActionButton>
+          <ActionButton onClick={generateCard} primary style={{ fontSize: 15, padding: "12px 28px" }}>Generate Play Card</ActionButton>
         </div>
       )}
 
@@ -4407,7 +4435,7 @@ If no plays exist in playbook for a category, invent plausible high school footb
       {/* locked play toast */}
       {lockedPlay && (
         <div style={{ position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", background: "#F5F0E8", border: "2px solid #00234D", borderRadius: 12, padding: "10px 20px", display: "flex", alignItems: "center", gap: 12, zIndex: 900, boxShadow: "0 8px 32px rgba(0,0,0,0.6)", minWidth: 280 }}>
-          <span style={{ fontSize: 18 }}>✅</span>
+          <span style={{ display:"inline-flex" }}>{IC.check("#4caf50",18)}</span>
           <div>
             <div style={{ fontSize: 11, color: "#00234D", fontWeight: 700 }}>PLAY CALLED</div>
             <div style={{ fontSize: 16, fontWeight: 700, color: "#00234D" }}>{lockedPlay.name}</div>
@@ -4622,7 +4650,7 @@ Return ONLY JSON (no markdown):
                   </div>
                   {showMetricForm && (
                     <div style={{ marginTop: 14, borderTop: "1px solid #E5DFD3", paddingTop: 14 }}>
-                      <div style={{ fontSize: 12, color: "#00234D", fontWeight: 700, marginBottom: 10 }}>📝 MANUAL ENTRY — fill only what you have measured</div>
+                      <div style={{ fontSize: 12, color: "#00234D", fontWeight: 700, marginBottom: 10 }}>MANUAL ENTRY — fill only what you have measured</div>
                       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(155px, 1fr))", gap: 8 }}>
                         {METRIC_DEFS.map(m => (
                           <div key={m.key}>
@@ -4638,7 +4666,7 @@ Return ONLY JSON (no markdown):
 
                 {/* Stopwatch */}
                 <Card style={{ marginBottom: 12 }}>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: "#00234D", marginBottom: 10, letterSpacing: 1 }}>⏱ LIVE STOPWATCH DRILL</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: "#00234D", marginBottom: 10, letterSpacing: 1 }}>LIVE STOPWATCH DRILL</div>
                   <div style={{ display: "flex", gap: 10, marginBottom: 12, flexWrap: "wrap", alignItems: "flex-end" }}>
                     <div style={{ flex: 1, minWidth: 180 }}>
                       <Select label="Drill" value={stopwatchDrill} onChange={setStopwatchDrill}>
@@ -4665,7 +4693,7 @@ Return ONLY JSON (no markdown):
 
                 {/* Metrics grid */}
                 <Card style={{ marginBottom: 12 }}>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: "#00234D", marginBottom: 12, letterSpacing: 1 }}>📊 ATHLETE MEASURABLES</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: "#00234D", marginBottom: 12, letterSpacing: 1 }}>ATHLETE MEASURABLES</div>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", gap: 8 }}>
                     {METRIC_DEFS.map(m => {
                       const val = profile.metrics?.[m.key];
@@ -4683,7 +4711,7 @@ Return ONLY JSON (no markdown):
                 {/* History */}
                 {profile.history?.length > 0 && (
                   <Card style={{ marginBottom: 12 }}>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: "#00234D", marginBottom: 10, letterSpacing: 1 }}>📈 TEST HISTORY</div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: "#00234D", marginBottom: 10, letterSpacing: 1 }}>TEST HISTORY</div>
                     <div style={{ display: "grid", gap: 4, maxHeight: 200, overflowY: "auto" }}>
                       {[...profile.history].reverse().map((h, i) => {
                         const def = METRIC_DEFS.find(m => m.key === h.drill);
@@ -4723,8 +4751,8 @@ Return ONLY JSON (no markdown):
                       <div style={{ fontSize: 10, color: "#00234D", fontWeight: 700, marginBottom: 4 }}>WHY {posRec.primaryPosition}</div>
                       <div style={{ fontSize: 13, color: "#374151" }}>{posRec.primaryReason}</div>
                     </div>
-                    {posRec.standoutMetric && <div style={{ background: "#EFF6FF", borderRadius: 8, padding: "8px 12px", marginBottom: 8, borderLeft: "3px solid #4caf50", fontSize: 12, color: "#374151" }}><span style={{ color: "#4caf50", fontWeight: 700 }}>⚡ STANDOUT: </span>{posRec.standoutMetric}</div>}
-                    {posRec.developmentFocus && <div style={{ background: "#1a0d16", borderRadius: 8, padding: "8px 12px", marginBottom: 12, borderLeft: "3px solid #ef5350", fontSize: 12, color: "#374151" }}><span style={{ color: "#ef5350", fontWeight: 700 }}>📈 DEVELOP: </span>{posRec.developmentFocus}</div>}
+                    {posRec.standoutMetric && <div style={{ background: "#EFF6FF", borderRadius: 8, padding: "8px 12px", marginBottom: 8, borderLeft: "3px solid #4caf50", fontSize: 12, color: "#374151" }}><span style={{ color: "#4caf50", fontWeight: 700 }}>STANDOUT:</span>{posRec.standoutMetric}</div>}
+                    {posRec.developmentFocus && <div style={{ background: "#1a0d16", borderRadius: 8, padding: "8px 12px", marginBottom: 12, borderLeft: "3px solid #ef5350", fontSize: 12, color: "#374151" }}><span style={{ color: "#ef5350", fontWeight: 700 }}>DEVELOP:</span>{posRec.developmentFocus}</div>}
                     {posRec.alternatePositions?.length > 0 && (
                       <div>
                         <div style={{ fontSize: 10, color: "#6B7280", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>ALTERNATE POSITIONS</div>
@@ -4998,11 +5026,11 @@ Return ONLY JSON: {"summary":"3-4 sentence recap of how the game went and what t
           {!opponents.length && <div style={{ fontSize: 13, color: "#ef5350", marginBottom: 12 }}>⚠️ Add an opponent in the Scout tab first so the simulator has something to play against.</div>}
           {selectedOpponent && (
             <div style={{ background: "#F5F0E8", borderRadius: 8, padding: "10px 14px", marginBottom: 16, fontSize: 12, color: "#6B7280" }}>
-              {oppFilm.length > 0 ? `✅ Using ${oppFilm.length} film snaps to inform their tendencies.` : "No film snaps for this opponent yet — simulation will use scouting report only."}
+              {oppFilm.length > 0 ? `Using ${oppFilm.length} film snaps to inform their tendencies.` : "No film snaps for this opponent yet — simulation will use scouting report only."}
             </div>
           )}
           <ActionButton primary onClick={startSim} style={{ fontSize: 14, padding: "11px 28px" }} disabled={!selectedOpponent}>
-            🎮 Start Simulation
+            Start Simulation
           </ActionButton>
         </Card>
       )}
@@ -5116,7 +5144,7 @@ Return ONLY JSON: {"summary":"3-4 sentence recap of how the game went and what t
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                   {sim.finalSummary.whatWorked?.length > 0 && (
                     <div style={{ background: "#F0F7F0", borderRadius: 8, padding: "12px 14px" }}>
-                      <div style={{ fontSize: 11, color: "#4caf50", fontWeight: 700, marginBottom: 8 }}>✅ WHAT WORKED</div>
+                      <div style={{ fontSize: 11, color: "#4caf50", fontWeight: 700, marginBottom: 8 }}>WHAT WORKED</div>
                       {sim.finalSummary.whatWorked.map((w, i) => <div key={i} style={{ fontSize: 12, color: "#374151", marginBottom: 5 }}>• {w}</div>)}
                     </div>
                   )}
@@ -5153,7 +5181,7 @@ Return ONLY JSON: {"summary":"3-4 sentence recap of how the game went and what t
             </div>
           )}
 
-          <ActionButton primary onClick={resetSim} style={{ fontSize: 14, padding: "11px 28px" }}>🎮 Run Another Simulation</ActionButton>
+          <ActionButton primary onClick={resetSim} style={{ fontSize: 14, padding: "11px 28px" }}>Run Another Simulation</ActionButton>
         </div>
       )}
     </div>
