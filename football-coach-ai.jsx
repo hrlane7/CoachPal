@@ -170,7 +170,7 @@ async function insertCall(teamId, record) {
 export default function Root() {
   const [session,setSession] = useState(null);
   const [authLoading,setAuthLoading] = useState(true);
-  const [authScreen,setAuthScreen] = useState("login");
+  const [authScreen,setAuthScreen] = useState("home");
 
   // Build a session object from the accounts row — shape stays compatible
   // with everything else in the app that reads session.name, session.plan, etc.
@@ -213,10 +213,11 @@ export default function Root() {
   );
 
   if(!session){
-    if(authScreen==="pricing")  return <PricingScreen onBack={()=>setAuthScreen("login")}/>;
-    if(authScreen==="signup")   return <SignupScreen onBack={()=>setAuthScreen("login")} onPricing={()=>setAuthScreen("pricing")}/>;
-    if(authScreen==="features") return <FeaturesScreen onBack={()=>setAuthScreen("login")} onSignup={()=>setAuthScreen("signup")}/>;
-    return <LoginScreen onSignup={()=>setAuthScreen("signup")} onPricing={()=>setAuthScreen("pricing")} onFeatures={()=>setAuthScreen("features")}/>;
+    if(authScreen==="pricing")  return <PricingScreen onBack={()=>setAuthScreen("home")}/>;
+    if(authScreen==="signup")   return <SignupScreen onBack={()=>setAuthScreen("home")} onPricing={()=>setAuthScreen("pricing")}/>;
+    if(authScreen==="features") return <FeaturesScreen onBack={()=>setAuthScreen("home")} onSignup={()=>setAuthScreen("signup")}/>;
+    if(authScreen==="login")    return <LoginScreen onSignup={()=>setAuthScreen("signup")} onPricing={()=>setAuthScreen("pricing")} onFeatures={()=>setAuthScreen("features")} onBack={()=>setAuthScreen("home")}/>;
+    return <HomeScreen onLogin={()=>setAuthScreen("login")} onSignup={()=>setAuthScreen("signup")} onFeatures={()=>setAuthScreen("features")} onPricing={()=>setAuthScreen("pricing")}/>;
   }
 
   if(session.role==="Game Manager")
@@ -265,7 +266,7 @@ function BetaAgreementGate({ session, onAgree, onLogout }) {
 // ─────────────────────────────────────────────────────────────
 // LOGIN
 // ─────────────────────────────────────────────────────────────
-function LoginScreen({onSignup,onPricing,onFeatures}){
+function LoginScreen({onSignup,onPricing,onFeatures,onBack}){
   const [email,setEmail]=useState(""); const [password,setPassword]=useState("");
   const [error,setError]=useState(""); const [loading,setLoading]=useState(false);
 
@@ -643,6 +644,135 @@ function PricingScreen({onBack}){
           <button onClick={onBack} style={{padding:"13px 36px",borderRadius:8,border:"none",background:"#00234D",color:"#fff",fontWeight:700,fontSize:15,cursor:"pointer"}}>Get Started →</button>
         </div>
       </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// HOME PAGE
+// ─────────────────────────────────────────────────────────────
+function HomeScreen({onLogin,onSignup,onFeatures,onPricing}){
+  const videoUrl = "https://videos.pexels.com/video-files/855021/855021-hd_1920_1080_25fps.mp4";
+
+  const stats = [
+    { value:"8", label:"Tabs of coaching tools" },
+    { value:"AI", label:"Play recommendations" },
+    { value:"∞", label:"Plays in your playbook" },
+    { value:"Live", label:"Game day coordinator" },
+  ];
+
+  const highlights = [
+    { icon:"📋", title:"Playbook Builder", desc:"Design plays visually, tag by situation, export a laminated sideline card in seconds." },
+    { icon:"🔍", title:"Opponent Scouting", desc:"Build opponent profiles and upload film. AI reads formations, coverage, and tendencies across your whole season." },
+    { icon:"🏈", title:"Game Day AI", desc:"Enter your game situation and get an instant play call — built from your actual playbook and what you know about the opponent." },
+    { icon:"💪", title:"Athlete Lab", desc:"Track combine metrics, time drills in-app, and get AI position recommendations based on real measurables." },
+    { icon:"🎬", title:"Film Room", desc:"Upload screenshots or pull frames from video. AI analyzes every snap for formation, personnel, and tendencies." },
+    { icon:"🏫", title:"School Hub", desc:"Invite your whole staff. Control who sees and edits what — OC, DC, Game Manager, position coaches — all under one account." },
+  ];
+
+  return(
+    <div style={{fontFamily:"system-ui,sans-serif",background:"#000",minHeight:"100vh",color:"#fff"}}>
+
+      {/* ── VIDEO HERO ── */}
+      <div style={{position:"relative",height:"100vh",overflow:"hidden",display:"flex",flexDirection:"column"}}>
+
+        {/* Video background */}
+        <video
+          autoPlay muted loop playsInline
+          style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",opacity:0.45}}
+          src={videoUrl}
+        />
+
+        {/* Gradient overlay */}
+        <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom, rgba(0,35,77,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.85) 100%)"}}/>
+
+        {/* Nav */}
+        <div style={{position:"relative",zIndex:10,display:"flex",alignItems:"center",justifyContent:"space-between",padding:"20px 40px"}}>
+          <LogoFull height={40}/>
+          <div style={{display:"flex",gap:12,alignItems:"center"}}>
+            <button onClick={onFeatures} style={{padding:"8px 18px",borderRadius:8,border:"1px solid rgba(255,255,255,0.3)",background:"transparent",color:"#fff",fontWeight:600,fontSize:13,cursor:"pointer"}}>Features</button>
+            <button onClick={onPricing} style={{padding:"8px 18px",borderRadius:8,border:"1px solid rgba(255,255,255,0.3)",background:"transparent",color:"#fff",fontWeight:600,fontSize:13,cursor:"pointer"}}>Pricing</button>
+            <button onClick={onLogin} style={{padding:"8px 18px",borderRadius:8,border:"1px solid rgba(255,255,255,0.4)",background:"transparent",color:"#fff",fontWeight:700,fontSize:13,cursor:"pointer"}}>Sign In</button>
+            <button onClick={onSignup} style={{padding:"9px 22px",borderRadius:8,border:"none",background:"#589AE6",color:"#fff",fontWeight:700,fontSize:13,cursor:"pointer"}}>Start Free</button>
+          </div>
+        </div>
+
+        {/* Hero content */}
+        <div style={{position:"relative",zIndex:10,flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",textAlign:"center",padding:"0 24px"}}>
+          <div style={{display:"inline-block",background:"rgba(88,154,230,0.2)",border:"1px solid rgba(88,154,230,0.5)",color:"#89C0F0",fontSize:11,fontWeight:700,letterSpacing:3,padding:"6px 18px",borderRadius:20,marginBottom:28,textTransform:"uppercase"}}>AI-Powered Football Coaching</div>
+          <h1 style={{fontSize:"clamp(36px,6vw,80px)",fontWeight:700,margin:"0 0 20px",lineHeight:1.05,fontFamily:"'Oswald',system-ui,sans-serif",letterSpacing:1,maxWidth:900,textShadow:"0 2px 40px rgba(0,0,0,0.5)"}}>
+            The Sideline Advantage<br/><span style={{color:"#589AE6"}}>Every Coach Deserves.</span>
+          </h1>
+          <p style={{fontSize:"clamp(15px,2vw,20px)",color:"rgba(255,255,255,0.8)",maxWidth:600,lineHeight:1.65,margin:"0 0 40px"}}>
+            CoachPal puts an AI coordinator in your pocket — playbook, scouting, film analysis, live play calls, and your entire staff in one tool.
+          </p>
+          <div style={{display:"flex",gap:14,flexWrap:"wrap",justifyContent:"center"}}>
+            <button onClick={onSignup} style={{padding:"15px 40px",borderRadius:10,border:"none",background:"#589AE6",color:"#fff",fontWeight:700,fontSize:16,cursor:"pointer",boxShadow:"0 4px 24px rgba(88,154,230,0.4)"}}>Get Started Free</button>
+            <button onClick={onFeatures} style={{padding:"15px 32px",borderRadius:10,border:"2px solid rgba(255,255,255,0.4)",background:"transparent",color:"#fff",fontWeight:600,fontSize:15,cursor:"pointer"}}>See How It Works</button>
+          </div>
+        </div>
+
+        {/* Stats bar */}
+        <div style={{position:"relative",zIndex:10,display:"flex",justifyContent:"center",gap:0,padding:"0 40px 48px",flexWrap:"wrap"}}>
+          {stats.map((s,i)=>(
+            <div key={i} style={{textAlign:"center",padding:"0 32px",borderRight:i<stats.length-1?"1px solid rgba(255,255,255,0.15)":0}}>
+              <div style={{fontSize:32,fontWeight:700,fontFamily:"'Oswald',system-ui,sans-serif",color:"#589AE6"}}>{s.value}</div>
+              <div style={{fontSize:11,color:"rgba(255,255,255,0.6)",letterSpacing:1,textTransform:"uppercase",marginTop:2}}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Scroll indicator */}
+        <div style={{position:"absolute",bottom:16,left:"50%",transform:"translateX(-50%)",zIndex:10,opacity:0.5,animation:"bounce 2s infinite"}}>
+          <div style={{width:1,height:40,background:"rgba(255,255,255,0.5)",margin:"0 auto"}}/>
+        </div>
+      </div>
+
+      {/* ── FEATURES GRID ── */}
+      <div style={{background:"#FAF6EF",padding:"80px 24px"}}>
+        <div style={{maxWidth:1000,margin:"0 auto"}}>
+          <div style={{textAlign:"center",marginBottom:56}}>
+            <div style={{fontSize:11,fontWeight:700,color:"#589AE6",letterSpacing:3,marginBottom:12,textTransform:"uppercase"}}>Everything in one place</div>
+            <h2 style={{fontSize:40,fontWeight:700,color:"#00234D",margin:0,fontFamily:"'Oswald',system-ui,sans-serif"}}>Built around how coaches actually work</h2>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:24}}>
+            {highlights.map((h,i)=>(
+              <div key={i} style={{background:"#FFFFFF",border:"1px solid #E5DFD3",borderRadius:16,padding:"28px 24px",transition:"box-shadow 0.2s"}}>
+                <div style={{fontSize:32,marginBottom:16}}>{h.icon}</div>
+                <div style={{fontSize:17,fontWeight:700,color:"#00234D",marginBottom:8,fontFamily:"'Oswald',system-ui,sans-serif"}}>{h.title}</div>
+                <div style={{fontSize:14,color:"#6B7280",lineHeight:1.65}}>{h.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── PLAN TEASER ── */}
+      <div style={{background:"#00234D",padding:"80px 24px",textAlign:"center"}}>
+        <div style={{maxWidth:700,margin:"0 auto"}}>
+          <div style={{fontSize:11,fontWeight:700,color:"#589AE6",letterSpacing:3,marginBottom:16,textTransform:"uppercase"}}>Simple pricing</div>
+          <h2 style={{fontSize:38,fontWeight:700,color:"#FFFFFF",margin:"0 0 16px",fontFamily:"'Oswald',system-ui,sans-serif"}}>Start free. Upgrade when you're ready.</h2>
+          <p style={{fontSize:16,color:"rgba(255,255,255,0.7)",margin:"0 0 40px",lineHeight:1.6}}>Free plan includes Playbook, Roster, Athlete Lab, and History. Pro unlocks everything — scouting, film, game day AI, live coordinator, and your whole staff.</p>
+          <div style={{display:"flex",gap:16,justifyContent:"center",flexWrap:"wrap",marginBottom:20}}>
+            <button onClick={onSignup} style={{padding:"14px 36px",borderRadius:10,border:"none",background:"#589AE6",color:"#fff",fontWeight:700,fontSize:16,cursor:"pointer"}}>Start for free</button>
+            <button onClick={onPricing} style={{padding:"14px 28px",borderRadius:10,border:"2px solid rgba(255,255,255,0.3)",background:"transparent",color:"#fff",fontWeight:600,fontSize:15,cursor:"pointer"}}>View pricing</button>
+          </div>
+          <div style={{fontSize:13,color:"rgba(255,255,255,0.45)"}}>No credit card required · Cancel anytime</div>
+        </div>
+      </div>
+
+      {/* ── FOOTER ── */}
+      <div style={{background:"#000D1A",padding:"28px 40px",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:16}}>
+        <LogoFull height={28}/>
+        <div style={{fontSize:12,color:"rgba(255,255,255,0.3)"}}>© {new Date().getFullYear()} CoachPal. All rights reserved.</div>
+        <div style={{display:"flex",gap:20}}>
+          <span onClick={onLogin} style={{fontSize:12,color:"rgba(255,255,255,0.4)",cursor:"pointer"}}>Sign In</span>
+          <span onClick={onFeatures} style={{fontSize:12,color:"rgba(255,255,255,0.4)",cursor:"pointer"}}>Features</span>
+          <span onClick={onPricing} style={{fontSize:12,color:"rgba(255,255,255,0.4)",cursor:"pointer"}}>Pricing</span>
+        </div>
+      </div>
+
+      <style>{`@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }`}</style>
     </div>
   );
 }
