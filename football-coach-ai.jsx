@@ -213,9 +213,10 @@ export default function Root() {
   );
 
   if(!session){
-    if(authScreen==="pricing") return <PricingScreen onBack={()=>setAuthScreen("login")}/>;
-    if(authScreen==="signup")  return <SignupScreen onBack={()=>setAuthScreen("login")} onPricing={()=>setAuthScreen("pricing")}/>;
-    return <LoginScreen onSignup={()=>setAuthScreen("signup")} onPricing={()=>setAuthScreen("pricing")}/>;
+    if(authScreen==="pricing")  return <PricingScreen onBack={()=>setAuthScreen("login")}/>;
+    if(authScreen==="signup")   return <SignupScreen onBack={()=>setAuthScreen("login")} onPricing={()=>setAuthScreen("pricing")}/>;
+    if(authScreen==="features") return <FeaturesScreen onBack={()=>setAuthScreen("login")} onSignup={()=>setAuthScreen("signup")}/>;
+    return <LoginScreen onSignup={()=>setAuthScreen("signup")} onPricing={()=>setAuthScreen("pricing")} onFeatures={()=>setAuthScreen("features")}/>;
   }
 
   if(session.role==="Game Manager")
@@ -264,7 +265,7 @@ function BetaAgreementGate({ session, onAgree, onLogout }) {
 // ─────────────────────────────────────────────────────────────
 // LOGIN
 // ─────────────────────────────────────────────────────────────
-function LoginScreen({onSignup,onPricing}){
+function LoginScreen({onSignup,onPricing,onFeatures}){
   const [email,setEmail]=useState(""); const [password,setPassword]=useState("");
   const [error,setError]=useState(""); const [loading,setLoading]=useState(false);
 
@@ -302,8 +303,9 @@ function LoginScreen({onSignup,onPricing}){
             Don't have an account? <span onClick={onSignup} style={{color:"#00234D",cursor:"pointer",fontWeight:700}}>Create one</span>
           </div>
         </div>
-        <div style={{textAlign:"center",marginTop:20}}>
-          <span onClick={onPricing} style={{fontSize:13,color:"#589AE6",cursor:"pointer",fontWeight:600}}>View pricing & plans →</span>
+        <div style={{textAlign:"center",marginTop:20,display:"flex",flexDirection:"column",gap:10}}>
+          <span onClick={onFeatures} style={{fontSize:14,color:"#00234D",cursor:"pointer",fontWeight:700}}>See what CoachPal can do →</span>
+          <span onClick={onPricing} style={{fontSize:13,color:"#589AE6",cursor:"pointer",fontWeight:600}}>View pricing & plans</span>
         </div>
       </div>
     </div>
@@ -609,7 +611,98 @@ function PricingScreen({onBack}){
 }
 
 // ─────────────────────────────────────────────────────────────
-// SCHOOL HUB  (Elite only — landing before entering CoachPal)
+// FEATURES / SALES PAGE
+// ─────────────────────────────────────────────────────────────
+function FeaturesScreen({onBack,onSignup}){
+  const features=[
+    {
+      label:"SEASON PREP",
+      title:"Build your playbook before the first whistle blows",
+      desc:"Design offensive and defensive plays with a drag-and-drop diagram builder, then let AI bulk-generate a full playbook package tailored to your formation and personnel. Tag every play by down, distance, formation, and situation so you can pull the right call instantly under pressure.",
+      bullets:["Visual play designer with route drawing","AI-generated playbook packages (50+ plays in seconds)","Tag by formation, down & distance, and game situation","Export a laminated play card for the sideline"],
+    },
+    {
+      label:"OPPONENT SCOUTING",
+      title:"Know what they're going to do before they do it",
+      desc:"Build opponent profiles, track tendencies across your season schedule, and upload game film screenshots for AI visual analysis. CoachPal identifies formations, coverage shells, personnel groupings, and blitz tendencies — then synthesizes it all into a weighted tendency report that gets smarter as the season goes on.",
+      bullets:["Opponent profiles with offense/defense tendencies","Season schedule with result tracking","Upload film screenshots — AI identifies formations and coverage","Tendency report weighted to recent games"],
+    },
+    {
+      label:"GAME DAY",
+      title:"Real-time AI coordinator on the sideline",
+      desc:"Enter the game situation — down, distance, field position, score, timeouts — and get an instant play recommendation with reasoning, key matchups, and clock management advice. Flip to Play Card mode for a pre-built card of your best situational plays, ready to call without digging through a binder.",
+      bullets:["Live play recommendations based on your actual playbook","Accounts for score, clock, field position, and opponent tendencies","Play Card mode for laminated-card-style sideline view","Full call history logged after every game"],
+    },
+    {
+      label:"YOUR ROSTER",
+      title:"Every player, every rep, all in one place",
+      desc:"Track your full roster with positions, ratings, injury status, and depth. The Athlete Lab goes deeper — log combine metrics (40-yard dash, vertical, bench, squat), run a stopwatch drill right in the app, and get an AI position recommendation based on your player's actual measurables and ratings.",
+      bullets:["Full roster with injury tracking and ratings","Combine metrics: 40-yard dash, vertical jump, strength lifts","In-app stopwatch for drill timing","AI position recommendation and depth chart builder"],
+    },
+    {
+      label:"YOUR STAFF",
+      title:"Coordinate your whole staff from one hub",
+      desc:"Pro coaches can set up a School Hub and invite assistant coaches and Game Managers. Assign module-level access (view or edit) to each staff member. Game Managers get a dedicated screen to run the clock and scoreboard during games — keeping play-calling and game management on separate devices.",
+      bullets:["Invite assistant coaches and Game Managers","Per-module permission control (view / edit)","Dedicated Game Manager screen for clock and score","Real-time sync across all devices during games"],
+    },
+  ];
+
+  return(
+    <div style={{minHeight:"100vh",background:"#FAF6EF",fontFamily:"system-ui,sans-serif"}}>
+      {/* Nav */}
+      <div style={{background:"#FFFFFF",borderBottom:"1px solid #E5DFD3",padding:"14px 24px",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+        <div style={{display:"flex",alignItems:"center",gap:12}}>
+          <LogoFull height={36}/>
+        </div>
+        <div style={{display:"flex",gap:12,alignItems:"center"}}>
+          <button onClick={onBack} style={{padding:"8px 18px",borderRadius:8,border:"1px solid #E5DFD3",background:"transparent",color:"#00234D",fontWeight:600,fontSize:13,cursor:"pointer"}}>Sign In</button>
+          <button onClick={onSignup} style={{padding:"8px 18px",borderRadius:8,border:"none",background:"#00234D",color:"#fff",fontWeight:700,fontSize:13,cursor:"pointer"}}>Start Free</button>
+        </div>
+      </div>
+
+      {/* Hero */}
+      <div style={{textAlign:"center",padding:"64px 24px 48px",maxWidth:680,margin:"0 auto"}}>
+        <div style={{display:"inline-block",background:"#EFF6FF",color:"#589AE6",fontSize:11,fontWeight:700,letterSpacing:2,padding:"4px 14px",borderRadius:20,marginBottom:20,textTransform:"uppercase"}}>AI-Powered Football Coaching</div>
+        <h1 style={{fontSize:42,fontWeight:700,color:"#00234D",margin:"0 0 16px",lineHeight:1.15,fontFamily:"'Oswald',system-ui,sans-serif",letterSpacing:0.5}}>Everything a high school coach needs. Nothing they don't.</h1>
+        <p style={{fontSize:17,color:"#6B7280",margin:"0 0 32px",lineHeight:1.6}}>CoachPal replaces your binder, your whiteboard, and your clipboard app with one tool that actually understands football — and helps you call the right play at the right moment.</p>
+        <button onClick={onSignup} style={{padding:"14px 32px",borderRadius:10,border:"none",background:"#00234D",color:"#fff",fontWeight:700,fontSize:16,cursor:"pointer",marginRight:12}}>Start for free</button>
+        <button onClick={()=>window.location.href="#features"} style={{padding:"14px 24px",borderRadius:10,border:"1px solid #E5DFD3",background:"transparent",color:"#00234D",fontWeight:600,fontSize:15,cursor:"pointer"}}>See the features</button>
+      </div>
+
+      {/* Features */}
+      <div id="features" style={{maxWidth:860,margin:"0 auto",padding:"0 24px 80px"}}>
+        {features.map((f,i)=>(
+          <div key={i} style={{background:"#FFFFFF",border:"1px solid #E5DFD3",borderRadius:16,padding:"36px 40px",marginBottom:20}}>
+            <div style={{fontSize:11,fontWeight:700,color:"#589AE6",letterSpacing:2,marginBottom:12,textTransform:"uppercase"}}>{f.label}</div>
+            <h2 style={{fontSize:24,fontWeight:700,color:"#00234D",margin:"0 0 12px",fontFamily:"'Oswald',system-ui,sans-serif"}}>{f.title}</h2>
+            <p style={{fontSize:15,color:"#6B7280",lineHeight:1.65,margin:"0 0 20px"}}>{f.desc}</p>
+            <div style={{display:"flex",flexDirection:"column",gap:8}}>
+              {f.bullets.map((b,j)=>(
+                <div key={j} style={{display:"flex",alignItems:"flex-start",gap:10}}>
+                  <div style={{width:18,height:18,borderRadius:"50%",background:"#EFF6FF",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:1}}>
+                    <div style={{width:6,height:6,borderRadius:"50%",background:"#589AE6"}}/>
+                  </div>
+                  <span style={{fontSize:14,color:"#374151"}}>{b}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        {/* CTA */}
+        <div style={{background:"#00234D",borderRadius:16,padding:"48px 40px",textAlign:"center"}}>
+          <h2 style={{fontSize:30,fontWeight:700,color:"#FFFFFF",margin:"0 0 12px",fontFamily:"'Oswald',system-ui,sans-serif"}}>Ready to get started?</h2>
+          <p style={{fontSize:15,color:"#C8D8F0",margin:"0 0 28px"}}>Free plan includes Playbook, Roster, History, and Game Sim. Upgrade to Pro for scouting, film room, game day AI, and more.</p>
+          <button onClick={onSignup} style={{padding:"14px 36px",borderRadius:10,border:"none",background:"#589AE6",color:"#fff",fontWeight:700,fontSize:16,cursor:"pointer",marginRight:12}}>Create a free account</button>
+          <button onClick={onBack} style={{padding:"14px 24px",borderRadius:10,border:"1px solid rgba(255,255,255,0.3)",background:"transparent",color:"#FFFFFF",fontWeight:600,fontSize:15,cursor:"pointer"}}>Sign in</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// SCHOOL HUB
 // ─────────────────────────────────────────────────────────────
 function SchoolHub({session,setSession,onLogout}){
   const [school,setSchool]=useState(()=>getSchool(session.schoolId));
