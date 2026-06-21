@@ -652,7 +652,9 @@ function PricingScreen({onBack}){
 // HOME PAGE
 // ─────────────────────────────────────────────────────────────
 function HomeScreen({onLogin,onSignup,onFeatures,onPricing}){
-  const videoUrl = "https://videos.pexels.com/video-files/855021/855021-hd_1920_1080_25fps.mp4";
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  // Swap this URL for any .mp4 — free football footage at pexels.com/search/videos/american+football
+  const videoUrl = "https://cdn.coverr.co/videos/coverr-american-football-players-in-a-game-2765/1080p.mp4";
 
   const stats = [
     { value:"8", label:"Tabs of coaching tools" },
@@ -676,19 +678,29 @@ function HomeScreen({onLogin,onSignup,onFeatures,onPricing}){
       {/* ── VIDEO HERO ── */}
       <div style={{position:"relative",height:"100vh",overflow:"hidden",display:"flex",flexDirection:"column"}}>
 
-        {/* Video background */}
+        {/* CSS animated background — always visible, video overlays it when loaded */}
+        <div style={{position:"absolute",inset:0,background:"linear-gradient(135deg,#000D1A 0%,#001A3A 40%,#00234D 70%,#0A1628 100%)",animation:"bgPulse 8s ease-in-out infinite"}}/>
+        <div style={{position:"absolute",inset:0,overflow:"hidden",pointerEvents:"none"}}>
+          <div style={{position:"absolute",top:"-20%",left:"10%",width:"60vw",height:"60vw",background:"radial-gradient(circle,rgba(88,154,230,0.12) 0%,transparent 70%)",animation:"drift1 12s ease-in-out infinite"}}/>
+          <div style={{position:"absolute",bottom:"-10%",right:"5%",width:"50vw",height:"50vw",background:"radial-gradient(circle,rgba(0,35,77,0.3) 0%,transparent 70%)",animation:"drift2 15s ease-in-out infinite"}}/>
+          <div style={{position:"absolute",top:"30%",right:"20%",width:"30vw",height:"30vw",background:"radial-gradient(circle,rgba(88,154,230,0.08) 0%,transparent 70%)",animation:"drift1 10s ease-in-out infinite reverse"}}/>
+        </div>
+
+        {/* Video background — loads on top of CSS animation */}
         <video
           autoPlay muted loop playsInline
-          style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",opacity:0.45}}
-          src={videoUrl}
-        />
+          onCanPlay={()=>setVideoLoaded(true)}
+          style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",opacity:videoLoaded?0.4:0,transition:"opacity 1.5s ease"}}
+        >
+          <source src={videoUrl} type="video/mp4"/>
+        </video>
 
         {/* Gradient overlay */}
-        <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom, rgba(0,35,77,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.85) 100%)"}}/>
+        <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom, rgba(0,13,26,0.5) 0%, rgba(0,0,0,0.15) 50%, rgba(0,13,26,0.9) 100%)"}}/>
 
         {/* Nav */}
         <div style={{position:"relative",zIndex:10,display:"flex",alignItems:"center",justifyContent:"space-between",padding:"20px 40px"}}>
-          <LogoFull height={40}/>
+          <img src={LOGO_FULL} alt="CoachPal" style={{height:40,width:"auto",filter:"brightness(0) invert(1)"}}/>
           <div style={{display:"flex",gap:12,alignItems:"center"}}>
             <button onClick={onFeatures} style={{padding:"8px 18px",borderRadius:8,border:"1px solid rgba(255,255,255,0.3)",background:"transparent",color:"#fff",fontWeight:600,fontSize:13,cursor:"pointer"}}>Features</button>
             <button onClick={onPricing} style={{padding:"8px 18px",borderRadius:8,border:"1px solid rgba(255,255,255,0.3)",background:"transparent",color:"#fff",fontWeight:600,fontSize:13,cursor:"pointer"}}>Pricing</button>
@@ -763,7 +775,7 @@ function HomeScreen({onLogin,onSignup,onFeatures,onPricing}){
 
       {/* ── FOOTER ── */}
       <div style={{background:"#000D1A",padding:"28px 40px",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:16}}>
-        <LogoFull height={28}/>
+        <img src={LOGO_FULL} alt="CoachPal" style={{height:28,width:"auto",filter:"brightness(0) invert(1)"}}/>
         <div style={{fontSize:12,color:"rgba(255,255,255,0.3)"}}>© {new Date().getFullYear()} CoachPal. All rights reserved.</div>
         <div style={{display:"flex",gap:20}}>
           <span onClick={onLogin} style={{fontSize:12,color:"rgba(255,255,255,0.4)",cursor:"pointer"}}>Sign In</span>
@@ -772,7 +784,12 @@ function HomeScreen({onLogin,onSignup,onFeatures,onPricing}){
         </div>
       </div>
 
-      <style>{`@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }`}</style>
+      <style>{`
+        @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+        @keyframes bgPulse { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.08)} }
+        @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(3%,4%) scale(1.05)} }
+        @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-4%,-3%) scale(1.08)} }
+      `}</style>
     </div>
   );
 }
