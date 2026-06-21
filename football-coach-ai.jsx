@@ -364,7 +364,24 @@ function SignupScreen({onBack}){
   const [error,setError]=useState(""); const [loading,setLoading]=useState(false);
   const [agreedToTerms,setAgreedToTerms]=useState(false);
   const [showAgreement,setShowAgreement]=useState(false);
+  const [promoCode,setPromoCode]=useState("");
+  const [promoStatus,setPromoStatus]=useState(null); // null | "checking" | "valid" | "invalid"
+  const [promoApplied,setPromoApplied]=useState(false); // true when a valid code has unlocked Pro
   const f=k=>v=>setForm(p=>({...p,[k]:v}));
+
+  async function applyPromoCode(){
+    if(!promoCode.trim()) return;
+    setPromoStatus("checking");
+    const { data, error } = await supabase.rpc("validate_promo_code", { p_code: promoCode.trim() });
+    if(error || !data){
+      setPromoStatus("invalid");
+      setPromoApplied(false);
+    } else {
+      setPromoStatus("valid");
+      setPromoApplied(true);
+      setSel(data); // set plan to whatever the code grants (e.g. "pro")
+    }
+  }
 
   async function handleCreate(){
     setError("");
@@ -461,11 +478,31 @@ function SignupScreen({onBack}){
             <div style={{fontSize:32}}>🏫</div>
             <div><div style={{fontSize:15,fontWeight:800,color:"#A87C00",marginBottom:4}}>Pro works for one coach or a whole staff</div><div style={{fontSize:13,color:"#6B7280",lineHeight:1.6}}>Every Pro account can optionally build out a School Hub — invite an OC, DC, or Game Manager, and control exactly what each person can see and edit, module by module. Varsity and JV can be managed separately under one account. You don't have to set any of this up now — it's there whenever you want it.</div></div>
           </div>
+          {/* Promo code */}
+          <div style={{background:"#FFFFFF",border:"1px solid #E5DFD3",borderRadius:12,padding:"18px 20px",marginBottom:24}}>
+            <div style={{fontSize:12,fontWeight:700,color:"#6B7280",marginBottom:8,letterSpacing:0.5,textTransform:"uppercase"}}>Have a promo code?</div>
+            <div style={{display:"flex",gap:8}}>
+              <input
+                value={promoCode}
+                onChange={e=>{setPromoCode(e.target.value.toUpperCase());setPromoStatus(null);setPromoApplied(false);}}
+                onKeyDown={e=>e.key==="Enter"&&applyPromoCode()}
+                placeholder="Enter code"
+                style={{flex:1,background:"#F5F0E8",border:`1px solid ${promoStatus==="invalid"?"#ef5350":promoStatus==="valid"?"#4caf50":"#E5DFD3"}`,borderRadius:8,padding:"9px 12px",color:"#00234D",fontSize:14,boxSizing:"border-box",textTransform:"uppercase",letterSpacing:1}}
+              />
+              <button onClick={applyPromoCode} disabled={!promoCode.trim()||promoStatus==="checking"} style={{padding:"9px 18px",borderRadius:8,border:"none",background:"#00234D",color:"#fff",fontWeight:700,fontSize:13,cursor:"pointer",whiteSpace:"nowrap"}}>
+                {promoStatus==="checking"?"Checking…":"Apply"}
+              </button>
+            </div>
+            {promoStatus==="valid"&&<div style={{marginTop:8,fontSize:13,color:"#2E7D32",fontWeight:700}}>✓ Code applied — Pro plan unlocked for free!</div>}
+            {promoStatus==="invalid"&&<div style={{marginTop:8,fontSize:13,color:"#ef5350",fontWeight:600}}>That code isn't valid or has expired.</div>}
+          </div>
+
           <div style={{textAlign:"center"}}>
             <button onClick={()=>setStep("details")} style={{padding:"13px 48px",borderRadius:8,border:"none",background:"#00234D",color:"#fff",fontWeight:700,fontSize:15,cursor:"pointer"}}>
-              Continue with {PLANS.find(p=>p.id===sel)?.name}{PLANS.find(p=>p.id===sel)?.priceAnnual&&annual?" (Annual)":""} →
+              Continue with {promoApplied?"Pro (Promo)":PLANS.find(p=>p.id===sel)?.name}{!promoApplied&&PLANS.find(p=>p.id===sel)?.priceAnnual&&annual?" (Annual)":""} →
             </button>
-            {PLANS.find(p=>p.id===sel)?.priceAnnual&&annual&&<div style={{marginTop:10,fontSize:12,color:"#4caf50",fontWeight:600}}>🎉 You're saving ${PLANS.find(p=>p.id===sel).price*12-PLANS.find(p=>p.id===sel).priceAnnual} with annual billing</div>}
+            {promoApplied&&<div style={{marginTop:10,fontSize:12,color:"#4caf50",fontWeight:600}}>Pro features unlocked — no payment needed</div>}
+            {!promoApplied&&PLANS.find(p=>p.id===sel)?.priceAnnual&&annual&&<div style={{marginTop:10,fontSize:12,color:"#4caf50",fontWeight:600}}>You're saving ${PLANS.find(p=>p.id===sel).price*12-PLANS.find(p=>p.id===sel).priceAnnual} with annual billing</div>}
           </div>
         </>)}
 
