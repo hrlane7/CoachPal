@@ -945,13 +945,13 @@ function App({session,setSession,onLogout,onBackToHub}){
 
   return(
     <div style={{fontFamily:"system-ui,sans-serif",minHeight:"100vh",background:"#FAF6EF",color:"#00234D"}}>
-      <header style={{background:"#00234D",borderBottom:"2px solid #589AE6",padding:"11px 20px",display:"flex",alignItems:"center",gap:14}}>
+      <header style={{background:"#FFFFFF",borderBottom:"2px solid #E5DFD3",padding:"11px 20px",display:"flex",alignItems:"center",gap:14}}>
         <LogoIcon size={36}/>
         <div>
-          <div style={{fontSize:17,fontWeight:700,letterSpacing:1,color:"#FFFFFF",fontFamily:"'Oswald',system-ui,sans-serif"}}>CoachPal {isStaffManaged&&<span style={{fontSize:10,fontWeight:600,color:"#589AE6",letterSpacing:2}}>SCHOOL</span>}</div>
+          <div style={{fontSize:17,fontWeight:700,letterSpacing:1,color:"#00234D",fontFamily:"'Oswald',system-ui,sans-serif"}}>CoachPal {isStaffManaged&&<span style={{fontSize:10,fontWeight:600,color:"#589AE6",letterSpacing:2}}>SCHOOL</span>}</div>
           {isStaffManaged&&activeTeam
-            ?<div style={{fontSize:11,color:"#C8D8F0"}}>{school?.name} · <span style={{color:"#589AE6",fontWeight:700}}>{activeTeam.name}</span></div>
-            :<div style={{fontSize:10,color:"#C8D8F0",letterSpacing:2,textTransform:"uppercase"}}>Offensive · Defensive · Film Coordinator</div>
+            ?<div style={{fontSize:11,color:"#6B7280"}}>{school?.name} · <span style={{color:"#589AE6",fontWeight:700}}>{activeTeam.name}</span></div>
+            :<div style={{fontSize:10,color:"#9CA3AF",letterSpacing:2,textTransform:"uppercase"}}>Offensive · Defensive · Film Coordinator</div>
           }
         </div>
         <div style={{marginLeft:"auto",display:"flex",alignItems:"center",gap:12}}>
