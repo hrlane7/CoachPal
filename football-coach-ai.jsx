@@ -241,7 +241,7 @@ function BetaAgreementGate({ session, onAgree, onLogout }) {
     <div style={{ minHeight:"100vh", background:"#FAF6EF", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:20, fontFamily:"system-ui,sans-serif" }}>
       <div style={{ width:"100%", maxWidth:480 }}>
         <div style={{ textAlign:"center", marginBottom:24 }}>
-          <div style={{ fontSize:40, marginBottom:10 }}>🏈</div>
+          <div style={{ marginBottom:10 }}><LogoIcon size={48}/></div>
           <div style={{ fontSize:22, fontWeight:800, color:"#00234D" }}>One quick update, {session.name?.split(" ")[0]||"Coach"}</div>
           <div style={{ fontSize:13, color:"#6B7280", marginTop:6 }}>We've added a Beta Pilot Agreement since you signed up. Please review and accept to keep using CoachPal — your data is safe and untouched.</div>
         </div>
@@ -432,7 +432,7 @@ function SignupScreen({onBack}){
       <div style={{maxWidth:920,margin:"0 auto",padding:"32px 20px"}}>
         <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:36}}>
           <button onClick={onBack} style={{background:"transparent",border:"none",color:"#6B7280",fontSize:20,cursor:"pointer"}}>←</button>
-          <div style={{fontSize:22,fontWeight:800,color:"#00234D"}}>🏈 CoachPal</div>
+          <LogoFull height={36}/>
           <div style={{marginLeft:"auto",fontSize:13,color:"#6B7280"}}>Already have an account? <span onClick={onBack} style={{color:"#00234D",cursor:"pointer",fontWeight:700}}>Sign in</span></div>
         </div>
 
@@ -583,7 +583,7 @@ function PricingScreen({onBack}){
       <div style={{maxWidth:980,margin:"0 auto",padding:"32px 20px"}}>
         <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:48}}>
           <button onClick={onBack} style={{background:"transparent",border:"none",color:"#6B7280",fontSize:20,cursor:"pointer"}}>←</button>
-          <div style={{fontSize:22,fontWeight:800,color:"#00234D"}}>🏈 CoachPal</div>
+          <LogoFull height={36}/>
         </div>
         <div style={{textAlign:"center",marginBottom:48}}>
           <div style={{fontSize:36,fontWeight:800,color:"#00234D",marginBottom:12}}>Simple, transparent pricing</div>
