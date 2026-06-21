@@ -430,7 +430,7 @@ function SignupScreen({onBack}){
               </button>
             </div>
           </div>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16,marginBottom:32}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:16,marginBottom:32,maxWidth:580,margin:"0 auto 32px"}}>
             {PLANS.map(plan=>{
               const showAnnual=annual&&plan.priceAnnual;
               const displayPrice=showAnnual?plan.priceAnnual:plan.price;
@@ -557,9 +557,9 @@ function PricingScreen({onBack}){
               Annual <span style={{fontSize:11,fontWeight:800,background:"#4caf50",color:"#fff",padding:"3px 8px",borderRadius:10}}>SAVE MORE</span>
             </button>
           </div>
-          {annual&&<div style={{marginTop:12,fontSize:13,color:"#4caf50",fontWeight:600}}>Pro annual: $499/yr (~$42/mo) · Elite annual: $999/yr (~$83/mo)</div>}
+          {annual&&<div style={{marginTop:12,fontSize:13,color:"#4caf50",fontWeight:600}}>Pro annual: $499/yr (~$42/mo · save $169)</div>}
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:20,marginBottom:36}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:20,marginBottom:36,maxWidth:700,margin:"0 auto 36px"}}>
           {PLANS.map(plan=>{
             const showAnnual=annual&&plan.priceAnnual;
             const displayPrice=showAnnual?plan.priceAnnual:plan.price;
@@ -588,8 +588,8 @@ function PricingScreen({onBack}){
           <div style={{display:"flex",alignItems:"center",gap:16,flexWrap:"wrap"}}>
             <div style={{fontSize:36}}>🏫</div>
             <div style={{flex:1}}>
-              <div style={{fontSize:20,fontWeight:800,color:"#A87C00",marginBottom:4}}>Elite is built for entire programs, not just one coach</div>
-              <div style={{fontSize:14,color:"#6B7280",lineHeight:1.6}}>One Elite school license covers your entire coaching staff — OC, DC, every position coach — each with their own login and customized module permissions set by the Head Coach. Manage Varsity and JV under one roof with a single subscription.</div>
+              <div style={{fontSize:20,fontWeight:800,color:"#A87C00",marginBottom:4}}>Pro is built for entire programs, not just one coach</div>
+              <div style={{fontSize:14,color:"#6B7280",lineHeight:1.6}}>One Pro account covers your entire coaching staff — OC, DC, every position coach — each with their own login and customized module permissions set by the Head Coach. Manage Varsity and JV under one roof with a single subscription.</div>
             </div>
           </div>
         </div>
