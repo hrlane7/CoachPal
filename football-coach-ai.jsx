@@ -631,12 +631,16 @@ function PricingScreen({onBack}){
             </div>
           </div>
         </div>
-        <div style={{background:"#FFFFFF",border:"1px solid #E5DFD3",borderRadius:14,padding:"24px 28px",display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:20}}>
-          {[["🔒","Secure","Playbook and roster data is encrypted and never shared."],["","Any Device","Phone, tablet, and desktop — perfect for sideline use."],["","Cancel Anytime","No contracts. Cancel with one click, no questions asked."]].map(([icon,title,desc])=>(
-            <div key={title} style={{textAlign:"center"}}>
-              <div style={{fontSize:28,marginBottom:8}}>{icon}</div>
-              <div style={{fontWeight:700,color:"#00234D",marginBottom:4}}>{title}</div>
-              <div style={{fontSize:12,color:"#6B7280",lineHeight:1.6}}>{desc}</div>
+        <div style={{background:"#FFFFFF",border:"1px solid #E5DFD3",borderRadius:14,padding:"28px",display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:0}}>
+          {[
+            {title:"Secure",desc:"Playbook and roster data is encrypted and never shared.",svg:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00234D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>},
+            {title:"Any Device",desc:"Phone, tablet, and desktop — perfect for sideline use.",svg:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00234D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>},
+            {title:"Cancel Anytime",desc:"No contracts. Cancel with one click, no questions asked.",svg:<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00234D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>},
+          ].map((item,i,arr)=>(
+            <div key={item.title} style={{textAlign:"center",padding:"8px 24px",borderRight:i<arr.length-1?"1px solid #E5DFD3":"none"}}>
+              <div style={{width:44,height:44,borderRadius:12,background:"#F5F0E8",display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 12px"}}>{item.svg}</div>
+              <div style={{fontWeight:700,color:"#00234D",marginBottom:4,fontFamily:"'Oswald',system-ui,sans-serif",letterSpacing:0.3,fontSize:15}}>{item.title}</div>
+              <div style={{fontSize:12,color:"#6B7280",lineHeight:1.6}}>{item.desc}</div>
             </div>
           ))}
         </div>
