@@ -43,7 +43,7 @@ const PLANS = [
     tabs:[0,1,6,7],
   },
   {
-    id:"pro", name:"Pro", price:39, priceAnnual:499, period:"mo", color:"#00234D", badge:"Most Popular",
+    id:"pro", name:"Pro", price:49, priceAnnual:499, period:"mo", color:"#00234D", badge:"Most Popular",
     tagline:"The complete program — built for one coach or a whole staff",
     features:[
       "Everything in Free",
@@ -462,7 +462,7 @@ function SignupScreen({onBack}){
                   <span style={{fontSize:32,fontWeight:800,color:"#00234D"}}>${displayPrice}</span>
                   {displayPeriod&&<span style={{fontSize:13,color:"#6B7280"}}>/{displayPeriod}</span>}
                 </div>
-                {showAnnual&&<div style={{fontSize:11,color:"#4caf50",fontWeight:700,marginBottom:6}}>Save ${annualSavings} vs monthly · ~${Math.round(plan.priceAnnual/12)}/mo</div>}
+                {showAnnual&&<div style={{fontSize:11,color:"#4caf50",fontWeight:700,marginBottom:6}}>Save {Math.round((1-plan.priceAnnual/(plan.price*12))*100)}% vs monthly · ~${Math.round(plan.priceAnnual/12)}/mo</div>}
                 {!showAnnual&&plan.priceAnnual&&<div style={{fontSize:11,color:"#6B7280",marginBottom:6}}>or ${plan.priceAnnual}/yr — save ${plan.price*12-plan.priceAnnual}</div>}
                 {!showAnnual&&!plan.priceAnnual&&<div style={{marginBottom:6}}/>}
                 <div style={{fontSize:12,color:"#6B7280",marginBottom:14,lineHeight:1.5}}>{plan.tagline}</div>
@@ -503,7 +503,7 @@ function SignupScreen({onBack}){
               Continue with {promoApplied?"Pro (Promo)":PLANS.find(p=>p.id===sel)?.name}{!promoApplied&&PLANS.find(p=>p.id===sel)?.priceAnnual&&annual?" (Annual)":""} →
             </button>
             {promoApplied&&<div style={{marginTop:10,fontSize:12,color:"#4caf50",fontWeight:600}}>Pro features unlocked — no payment needed</div>}
-            {!promoApplied&&PLANS.find(p=>p.id===sel)?.priceAnnual&&annual&&<div style={{marginTop:10,fontSize:12,color:"#4caf50",fontWeight:600}}>You're saving ${PLANS.find(p=>p.id===sel).price*12-PLANS.find(p=>p.id===sel).priceAnnual} with annual billing</div>}
+            {!promoApplied&&PLANS.find(p=>p.id===sel)?.priceAnnual&&annual&&<div style={{marginTop:10,fontSize:12,color:"#4caf50",fontWeight:600}}>{(()=>{const p=PLANS.find(pl=>pl.id===sel);return`You're saving ${Math.round((1-p.priceAnnual/(p.price*12))*100)}% with annual billing`;})()}</div>}
           </div>
         </>)}
 
@@ -531,7 +531,7 @@ function SignupScreen({onBack}){
               <div style={{fontSize:13,color:"#6B7280",marginTop:4}}>
                 {PLANS.find(p=>p.id===sel)?.name} · {(()=>{const p=PLANS.find(pl=>pl.id===sel);if(p.price===0)return"Free";return annual&&p.priceAnnual?`$${p.priceAnnual}/yr (~$${Math.round(p.priceAnnual/12)}/mo)`:`$${p.price}/mo`;})()} · <span onClick={()=>setStep("plan")} style={{color:"#00234D",cursor:"pointer"}}>change plan</span>
               </div>
-              {(()=>{const p=PLANS.find(pl=>pl.id===sel);return annual&&p.priceAnnual&&<div style={{marginTop:8,padding:"6px 14px",background:"#0a1a0a",border:"1px solid #4caf50",borderRadius:8,display:"inline-block",fontSize:12,color:"#4caf50",fontWeight:700}}>🎉 Annual plan — saving ${p.price*12-p.priceAnnual}</div>;})()}
+              {(()=>{const p=PLANS.find(pl=>pl.id===sel);return annual&&p.priceAnnual&&<div style={{marginTop:8,padding:"6px 14px",background:"#0a1a0a",border:"1px solid #4caf50",borderRadius:8,display:"inline-block",fontSize:12,color:"#4caf50",fontWeight:700}}>Annual plan — saving {Math.round((1-p.priceAnnual/(p.price*12))*100)}%</div>;})()}
               {sel==="pro"&&<div style={{marginTop:10,padding:"8px 16px",background:"#FFFBEB",border:"1px solid #A87C00",borderRadius:8,fontSize:12,color:"#A87C00"}}>🏫 Want to add assistant coaches later? Pro includes a full School Hub you can set up anytime — no need to decide now.</div>}
             </div>
             <div style={{background:"#FFFFFF",border:"1px solid #E5DFD3",borderRadius:16,padding:"28px 24px"}}>
@@ -595,7 +595,7 @@ function PricingScreen({onBack}){
               Annual <span style={{fontSize:11,fontWeight:800,background:"#4caf50",color:"#fff",padding:"3px 8px",borderRadius:10}}>SAVE MORE</span>
             </button>
           </div>
-          {annual&&<div style={{marginTop:12,fontSize:13,color:"#4caf50",fontWeight:600}}>Pro annual: $499/yr (~$42/mo · save $169)</div>}
+          {annual&&<div style={{marginTop:12,fontSize:13,color:"#4caf50",fontWeight:600}}>Pro annual: $499/yr (~$42/mo · save 15%)</div>}
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:20,marginBottom:36,maxWidth:700,margin:"0 auto 36px"}}>
           {PLANS.map(plan=>{
@@ -611,8 +611,8 @@ function PricingScreen({onBack}){
                 <span style={{fontSize:40,fontWeight:800,color:"#00234D"}}>${displayPrice}</span>
                 {displayPeriod&&<span style={{fontSize:14,color:"#6B7280"}}>/{displayPeriod}</span>}
               </div>
-              {showAnnual&&<div style={{fontSize:12,color:"#4caf50",fontWeight:700,marginBottom:8}}>~${Math.round(plan.priceAnnual/12)}/mo · Save ${annualSavings}</div>}
-              {!showAnnual&&plan.priceAnnual&&<div style={{fontSize:12,color:"#6B7280",marginBottom:8}}>or ${plan.priceAnnual}/yr — save ${annualSavings}</div>}
+              {showAnnual&&<div style={{fontSize:12,color:"#4caf50",fontWeight:700,marginBottom:8}}>~${Math.round(plan.priceAnnual/12)}/mo · Save {Math.round((1-plan.priceAnnual/(plan.price*12))*100)}%</div>}
+              {!showAnnual&&plan.priceAnnual&&<div style={{fontSize:12,color:"#6B7280",marginBottom:8}}>or ${plan.priceAnnual}/yr — save {Math.round((1-plan.priceAnnual/(plan.price*12))*100)}%</div>}
               {!showAnnual&&!plan.priceAnnual&&<div style={{marginBottom:8}}/>}
               <div style={{fontSize:13,color:"#6B7280",marginBottom:20,lineHeight:1.6}}>{plan.tagline}</div>
               <div style={{borderTop:"1px solid #E5DFD3",paddingTop:16,display:"grid",gap:7}}>
@@ -974,7 +974,7 @@ function SchoolHub({session,setSession,onLogout}){
         {view==="dashboard"&&(
           <div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:14,marginBottom:24}}>
-              {[["","Staff",school.staff.length,"coaches on staff"],["","Teams",school.teams.length,"programs"],["⭐","Plan","Pro","School Hub Active"],["","Billing",session.billingPeriod==="annual"?"Annual":"Monthly",session.billingPeriod==="annual"?"$499/yr · best value":"$39/mo"]].map(([icon,label,val,sub])=>(
+              {[["","Staff",school.staff.length,"coaches on staff"],["","Teams",school.teams.length,"programs"],["⭐","Plan","Pro","School Hub Active"],["","Billing",session.billingPeriod==="annual"?"Annual":"Monthly",session.billingPeriod==="annual"?"$499/yr · best value":"$49/mo"]].map(([icon,label,val,sub])=>(
                 <div key={label} style={{background:"#FFFFFF",border:"1px solid #E5DFD3",borderRadius:12,padding:"18px 20px"}}>
                   <div style={{fontSize:22,marginBottom:4}}>{icon}</div>
                   <div style={{fontSize:11,color:"#6B7280",letterSpacing:1,textTransform:"uppercase"}}>{label}</div>
